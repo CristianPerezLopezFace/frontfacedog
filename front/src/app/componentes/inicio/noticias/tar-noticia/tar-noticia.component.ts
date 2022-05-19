@@ -8,15 +8,9 @@ import { formatDate } from '@angular/common';
 import { Notificacion } from 'src/app/clases/notificacion';
 import { Router } from '@angular/router';
 import { MessageService } from 'src/app/servicios/message.service';
-import { NotificacionComponent } from 'src/app/componentes/notificacion/notificacion.component';
 import { MatDialog } from '@angular/material/dialog';
 import { AmpliarFotoComponent } from 'src/app/componentes/ampliar-foto/ampliar-foto.component';
 import { DocumentServiceService } from 'src/app/servicios/documentService.service';
-import { Doc ,Document} from 'src/app/clases/Documento';
-import { Subscription } from 'rxjs';
-import { startWith } from 'rxjs/operators';
-import { ControlSocketsService } from 'src/app/servicios/control-sockets.service';
-
 @Component({
   selector: 'app-tar-noticia',
   templateUrl: './tar-noticia.component.html',
@@ -37,9 +31,10 @@ export class TarNoticiaComponent implements OnInit {
   sinAmigos: boolean = false;
 
   mostrar: boolean = false;
-
+  likes:[]=[]
   nameUserNoticia = ""
-  nombres:string[]=[]
+  nombresLike:string[]=[]
+
   @Input()
   foto!: Foto;
 
@@ -49,7 +44,6 @@ export class TarNoticiaComponent implements OnInit {
   veterinario!:boolean
   constructor(
     
-    private documentService: DocumentServiceService,
     public dialog: MatDialog,
     private message: MessageService,
     private userService: UsuriosService,
@@ -60,7 +54,8 @@ export class TarNoticiaComponent implements OnInit {
   ngOnInit(): void {
     this.getImagen();
     this.getNombreUsuario(this.foto.email)
-
+    this.likes = this.foto.likes
+    this.getNombresLike()
   
   }
 
@@ -121,10 +116,8 @@ export class TarNoticiaComponent implements OnInit {
     this.userService.setNotificaion(notificacion).subscribe((e) => {});
   }
 
-  like(id_foto: number) {
-    this.ok = true;
-    this.userService.addLikeImg(id_foto, this.id_user).subscribe((e) => {
-      
+  like(id_foto: number) { 
+    this.userService.addLikeImg(id_foto, this.id_user).subscribe((e) => {  
          this.getImagen();
          this.ngOnInit()
     });
@@ -146,14 +139,15 @@ export class TarNoticiaComponent implements OnInit {
     this.router.navigate(['/amigos']);
   
   }
-  getNombresLike(ids:number[]){
-      this.nombres=[]
-      for(let i =0;i<ids.length;i++) {
-          this.userService.get_one_user_by_id(ids[i]).subscribe(user => {
-                this.nombres.push(user.name)
+  getNombresLike(){
+      this.nombresLike=[]
+      
+      this.likes.forEach(id => {
+        
+          this.userService.get_one_user_by_id(id).subscribe(user => {
+              this.nombresLike.push(user.name)
           })
-
-      }
+      })
   }
   openDialog(foto:Foto) {
     const dialogRef = this.dialog.open(AmpliarFotoComponent,{

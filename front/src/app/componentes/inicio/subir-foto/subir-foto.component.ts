@@ -49,14 +49,15 @@ export class SubirFotoComponent implements OnInit {
     let titulo=this.contacForm.controls["titulo"].value
     let descrpcion= this.contacForm.controls["descripcion"].value
     let emailFoto=this.jwt.decodeToken(localStorage.getItem("token") !).sub.email;
-    let dataFoto="data:image/png;base64,"+this.archivo.base64textString
+    let dataFoto="data:image/png;base64,"+this.archivo.base64textString.trim()
     
     if(dataFoto.length>25){
          let foto = new Foto(titulo,descrpcion,dataFoto,emailFoto,0,0,[],[],new Date(),"user");
          this.userService.addImage(foto).subscribe((m)=>{
             this.message.createMessage("Se subio a tu galeria")
-            this.modalService.dismissAll()
-      })
+            
+          })
+          this.modalService.dismissAll()
     }else{
       this.message.createMessage("No se ha añadido ninguna foto")
     }
@@ -78,28 +79,20 @@ export class SubirFotoComponent implements OnInit {
     var binaryString=readerEvent.target.result;
     this.archivo.base64textString=btoa(binaryString);
     console.log(this.archivo.base64textString)
-    this.srcFotoSeleccionada ="data:image/png;base64,"+this.archivo.base64textString
+    this.srcFotoSeleccionada ="data:image/jpg;base64,"+this.archivo.base64textString
    
     
   }
   open(content: any) {
 
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      this.closeResult = `Dismissed`;
     });
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+ 
 
   
   private fileChangeListener($event:any ) {

@@ -28,7 +28,8 @@ export class NotificacionComponent implements OnInit {
     public dialogRef: MatDialogRef<NotificacionComponent>,
     private jwt:JwtHelperService,
     @Inject(MAT_DIALOG_DATA) public dialog: any,
-    private message:MessageService
+    private message:MessageService,
+    
 
 
   ) {
@@ -101,7 +102,6 @@ export class NotificacionComponent implements OnInit {
   }
   
   notificaionVista(noti: Notificacion) {
-    console.log("notiifiicacaaaiononnnn")
     if (noti.tipo == 'solicitud de amistad') {
       let aceptar = confirm('Aceptar peticion');
       if (aceptar) {
@@ -146,6 +146,7 @@ export class NotificacionComponent implements OnInit {
   @HostListener('document:click') eventClickOut(){
     
     this.dialogRef.backdropClick().subscribe(e => {
+      if(this.dialog["notificacion"].tipo != "p de amsolicitudstad")
       this.notificaionVista(this.dialog["notificaion"])  
     })
 

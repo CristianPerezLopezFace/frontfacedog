@@ -6,6 +6,13 @@
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../assets/styles2.scss";
 
+@include media-breakpoint-down(sm) {
+    .navbar{
+       width: 100vh;
+    }
+  
+
+}
 
 .nav-item{  
   width: 180px;  

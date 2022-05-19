@@ -31,15 +31,16 @@
       </div>
 
       <div class="nav-item dropdown">
-          <button mat-icon-button [matMenuTriggerFor]="menu"  (mouseenter)="getNombresLike(foto.likes)"
-         *ngIf="!veterinario" mat-button (click)="like(foto.id)">
+         <p style="font-size: 0.6rem; color:rgb(0,0,0,0.5)">{{ nombresLike[0] ? nombresLike[0] : ""}}</p>
+          <button mat-icon-button [matMenuTriggerFor]="menu" 
+         *ngIf="!veterinario" mat-button  (click)="like(foto.id) ; getNombresLike()">
               <mat-icon  style="color: #214ea8;">thumb_up</mat-icon>
       
               {{ foto.likes.length }}
             </button>
-            <mat-menu #menu="matMenu">
+            <mat-menu #menu="matMenu" >
                 
-            <button mat-menu-item *ngFor="let nombre of nombres">
+            <button  mat-menu-item *ngFor="let nombre of nombresLike">
               <mat-icon>person</mat-icon>
               <span style="text-align: center;">{{nombre}}</span>
             </button>

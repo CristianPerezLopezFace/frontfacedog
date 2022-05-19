@@ -15,6 +15,21 @@
 
 <div>
   <div>
-    <app-chat [consulta]="true"></app-chat>
+    <!-- <app-chat [consulta]="true"></app-chat> -->
   </div>
+</div>
+<div>
+  <app-subir-foto></app-subir-foto>
+</div>
+<div>
+
+  <button
+    class="button"
+    mat-button
+    [disableRipple]="true"  
+        
+    (click)="mostrarGale()"
+    >
+      Galeria <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+  </button>
 </div>

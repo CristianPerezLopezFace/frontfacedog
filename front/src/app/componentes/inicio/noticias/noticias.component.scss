@@ -6,13 +6,20 @@
 
 @include media-breakpoint-down(md) {
   .scroll {
-    width: 100%;
+    width: 90% !important;
     margin-left: 0rem !important;
-    height: 450px !important;
+    height: 100vh !important;
+  
   }
 
 }
-@include media-breakpoint-down(lg) {
+@include media-breakpoint-down(sm) {
+  .scroll {
+
+    margin: 1rem !important;
+  
+  }
+
 }
 
 
@@ -21,28 +28,13 @@
   height: 100vh;
   max-width: 100vh;
   overflow:scroll; 
-
-}
-.example-card {
-  border: solid 1px rgb(2, 2, 2, 0.3);
-  border-radius: 3%;
 }
 
-img {
-  border-radius: 7%;
-  padding: 0.5rem;
-}
-mat-form-field {
-  width: 100%;
-}
+
+
 
 button {
   font-family: $tipoLetraPrimary !important;
-}
-.scrollComen {
-  height: 25rem;
-  width: 22rem;
-  font-family: $tipoLetraPrimary;
 }
 
 

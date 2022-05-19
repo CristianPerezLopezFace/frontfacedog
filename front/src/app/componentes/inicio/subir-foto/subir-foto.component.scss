@@ -67,3 +67,10 @@ img{
   .buttonSportsSelected {
      border-bottom: solid 2px black;
   }
+  p,
+button,
+div {
+  font-family: $tipoLetraPrimary;
+  font-size: large;
+  text-align: center;
+}

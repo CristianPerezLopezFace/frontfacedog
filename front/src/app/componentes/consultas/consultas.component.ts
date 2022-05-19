@@ -38,7 +38,6 @@ export class ParquesComponent implements OnInit {
   constructor(
     
     private message: MessageService,
-    private documentService: DocumentServiceService,
     private servicioUsuario: UsuriosService,
     private router: Router,
     private jwt: JwtHelperService,
@@ -91,9 +90,6 @@ export class ParquesComponent implements OnInit {
     this.router.navigate(['home/inicio'])
   }
 
-  conectado() {
-    this.documentService.userConectado;
-  }
 
   activarChat() {
     this.abrirChat = this.abrirChat == true ? false : true;

@@ -47,7 +47,7 @@ export class ComentarioComponent implements OnInit {
 
             this.userService.addLikeComentario(id_foto,user.id,this.posicionEnLista).subscribe(e => {
                     this.ok = true
-                    this.getFoto()
+                    this.ngOnInit()
 
             })
     })

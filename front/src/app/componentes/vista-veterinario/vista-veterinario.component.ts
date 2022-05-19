@@ -6,6 +6,7 @@ import { Foto } from 'src/app/clases/foto';
 import { UsuriosService } from '../../servicios/usurios.service';
 import { formatDate } from '@angular/common';
 import { Notificacion } from 'src/app/clases/notificacion';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vista-veterinario',
@@ -21,7 +22,7 @@ export class VistaVeterinarioComponent implements OnInit {
   datosImgAmpliar=""
   ampliar:boolean =false
   idFotoAmpliada = 0
-  constructor(private userService:UsuriosService,private jwt:JwtHelperService) { }
+  constructor( private router: Router,private userService:UsuriosService,private jwt:JwtHelperService) { }
 
   ngOnInit(): void {
     this.getNoticias()
@@ -40,7 +41,10 @@ export class VistaVeterinarioComponent implements OnInit {
       
 
   }
+  mostrarGale() {
+    this.router.navigate(['/home/galeria']);
 
+  }
 
 
 

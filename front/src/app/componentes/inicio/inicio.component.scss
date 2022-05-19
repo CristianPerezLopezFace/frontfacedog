@@ -20,6 +20,7 @@
   
   .divIzq{
     width: 100%  !important;
+    
    
   }
 
@@ -48,13 +49,21 @@
   .btns{
     display:block !important;
     justify-content: space-around !important;
+    text-align-last: justify !important;
   }
   .noticiasYchat{
     display: block !important;
   }
   .centro{
     width: 100vh !important;
-    height: 30rem !important;
+    height: 50rem !important;
+    border: solid 3px $bordes !important;
+  }
+  .divIzq{
+  }
+  
+  .inicio{
+    width: 100vh !important;
   }
 
 }
@@ -119,7 +128,7 @@ mat-icon {
   margin-right: 1rem !important;
 }
 
-.buttonSportsSelected {
+.buttonSelected {
    border-bottom: solid 2px black;
 }
 

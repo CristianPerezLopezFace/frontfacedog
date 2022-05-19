@@ -1,16 +1,13 @@
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { DocumentServiceService } from 'src/app/servicios/documentService.service';
 import { MessageService } from 'src/app/servicios/message.service';
 import { UserRegisterService } from 'src/app/servicios/user-register.service';
 
 import { Foto } from '../../clases/foto';
 import { UsuriosService } from '../../servicios/usurios.service';
-import { ImgGaleriaComponent } from '../img-galeria/img-galeria.component';
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -41,7 +38,6 @@ export class InicioComponent implements OnInit {
     public sanitizer: DomSanitizer,
     
     private message: MessageService,
-    private documentService: DocumentServiceService,
     private servicioUsuario: UsuriosService,
     private router: Router,
     private jwt: JwtHelperService,
@@ -79,9 +75,7 @@ export class InicioComponent implements OnInit {
   amigos(){
     this.router.navigate(['home/amigos'])
   }
-  conectado() {
-    this.documentService.userConectado;
-  }
+ 
 
   activarChat() {
     this.abrirChat = this.abrirChat == true ? false : true;

@@ -3,14 +3,12 @@ import { Data, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Subscription, Observable, Subject } from 'rxjs';
 
-import { NotificacionService } from 'src/app/servicios/notificacion.service';
 import { UserRegisterService } from 'src/app/servicios/user-register.service';
 import { Notificacion } from '../../clases/notificacion';
 import { UsuriosService } from '../../servicios/usurios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Foto } from 'src/app/clases/foto';
 import { NotificacionComponent } from '../notificacion/notificacion.component';
-import { ControlSocketsService } from 'src/app/servicios/control-sockets.service';
 
 
 
@@ -47,12 +45,10 @@ export class MenuNavComponent implements OnInit {
   recargarMenu: Subject<boolean> = this.userRegisterService.recargar;
   constructor(
     public dialog: MatDialog,
-    private notifcacionService: NotificacionService,
     private userRegisterService: UserRegisterService,
     private router: Router,
     private userService: UsuriosService,
     private jwt: JwtHelperService,
-    private sockerService:ControlSocketsService
   ) {}
 
   ngOnInit() {

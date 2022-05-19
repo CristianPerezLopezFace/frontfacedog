@@ -55,10 +55,7 @@ import { AmpliarFotoComponent } from './componentes/ampliar-foto/ampliar-foto.co
 
 //  import { SafePipe } from './shared/url-transform-pipe';
 
-
-const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
-
-const configNotificaciones: SocketIoConfig = { url: 'http://localhost:3001', options: {} };
+const config: SocketIoConfig = { url: 'https://chatfacedog.herokuapp.com/', options: {} };
 
 @NgModule({
   declarations: [
