@@ -39,11 +39,9 @@ export class AministracionComponent implements OnInit {
        this.controlarRol = rol
        if(this.tokenExpired()){
        this.userRegister=this.jwt.decodeToken(localStorage.getItem("token")!).sub.name
-       this.users = []        
        this.userService.find_all_users(this.skip,this.limit,rol).subscribe(data =>  {            
-               data.users.forEach((element: any) => 
-                   this.users.push(element)
-               )    
+                this.users = []        
+                this.users = data.users 
                this.total=data.total       
            }),((error: { error: { detail: string | undefined; }; }) => {
                     confirm(error.error.detail)

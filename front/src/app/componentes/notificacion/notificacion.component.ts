@@ -23,6 +23,8 @@ export class NotificacionComponent implements OnInit {
   value:string=" "
   amigo!:Usuario
   notificacion:Notificacion= this.dialog["notificaion"]
+
+
   constructor(
     private userService: UsuriosService,
     public dialogRef: MatDialogRef<NotificacionComponent>,
@@ -106,12 +108,13 @@ export class NotificacionComponent implements OnInit {
       let aceptar = confirm('Aceptar peticion');
       if (aceptar) {
         this.userService.aceptarAmgio(noti).subscribe((e) => {
+             
         });
       }
     }
     if (noti.tipo == 'comentario en foto') {
       this.userService.borrarNotificacionComentario(noti).subscribe((e) => {
-                       
+                   
       });
     }
   }
@@ -146,8 +149,8 @@ export class NotificacionComponent implements OnInit {
   @HostListener('document:click') eventClickOut(){
     
     this.dialogRef.backdropClick().subscribe(e => {
-      if(this.dialog["notificacion"].tipo != "p de amsolicitudstad")
-      this.notificaionVista(this.dialog["notificaion"])  
+      if(this.notificacion.tipo != "solicitud de amistad")
+             this.notificaionVista(this.notificacion)  
     })
 
   }

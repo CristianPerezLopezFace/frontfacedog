@@ -15,34 +15,48 @@ import { UsuriosService } from '../../servicios/usurios.service';
 export class AmigosComponent implements OnInit {
   
   sonAmigos:boolean=true
-  amigos:Amigo[]=[]
+  usuarios:Amigo[]=[]
+  amigos:number[]=[]
   id_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.id;
+  ciudad_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.city
 
   constructor(private message:MessageService,private comunicacion:ComunicacionComponentsService,private userService:UsuriosService,private router:Router,private jwt:JwtHelperService) { }
 
   ngOnInit(): void {
     this.getAmigos()
+    console.log(this.amigos.length," amigos")
   }
   getAmigos(){
       this.sonAmigos=true
       let emailUser=this.jwt.decodeToken(localStorage.getItem("token") !).sub.email;
-      this.amigos=[]
-      this.userService.getAmigos(emailUser).subscribe(e =>{
-        e.forEach(amigo => {
-                
-                this.amigos.push(amigo)
-           })
-           
+      this.userService.getAmigos(emailUser).subscribe(amigos =>{
+          this.amigos=[]
+          amigos.forEach(amigo => {
+            this.amigos.push(amigo.id)
+            this.usuarios.push(amigo)    
+          }) 
       })
   }
-  getAllUsers(){
+  async getAllUsers()  {
     this.sonAmigos=false
-    this.amigos=[]
-    this.userService.getAllUsers().subscribe(e =>{
-         e.forEach(amigo => {
-             this.amigos.push(amigo)
+    this.usuarios=[]
+    this.userService.getAllUsers().subscribe(usuarios =>{
+         usuarios.forEach(usuario => {
+           if(!this.amigos.includes(usuario.id)){
+              this.usuarios.push(usuario)
+           }
          })
-         
+         console.log("hola 1")
+    })
+  }
+  async getAllUserByCity(){
+
+    await this.getAllUsers()
+    console.log("hola 2")
+
+    this.usuarios.filter(usuario => {
+      console.log(usuario.ciudad,this.ciudad_user)
+      usuario.ciudad == this.ciudad_user
     })
   }
   solicitarAmistad(email:string){

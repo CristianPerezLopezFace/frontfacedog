@@ -9,8 +9,9 @@ export class Usuario {
     email : string
     roles:string
     descripcion:string
+    habilitado:number
 
-    constructor(password:string,name:string,surName:string,ciudad:string,email:string,roles:string,id:number,descrip:string){
+    constructor(password:string,name:string,surName:string,ciudad:string,email:string,roles:string,id:number,descrip:string,habilitado:number){
         this.id=id
         this.name=name;
         this.email=email;
@@ -19,6 +20,7 @@ export class Usuario {
         this.ciudad=ciudad;
         this.roles=roles;
         this.descripcion=descrip;
+        this.habilitado=habilitado
     
     }
 }

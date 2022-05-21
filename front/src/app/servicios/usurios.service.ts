@@ -11,7 +11,7 @@ import { Comentario } from '../clases/comentario';
 
 const  url = "https://facedogapirest.herokuapp.com/";      
 
-// const  url = "http://127.0.0.1:8000/";      
+//  const  url = "http://localhost:8000/";      
 @Injectable({
   providedIn: 'root'
 })
@@ -64,7 +64,9 @@ export class UsuriosService {
  addLikeComentario(id_foto:number,id_user:number,posicion:number) : Observable<any>{
     return this.http.get<any>(url+"users/addLikeComentario/"+id_foto+"/"+id_user+"/"+posicion)
   } 
-
+  getNombresLikesFoto(idFoto:number) : Observable<string[]>{
+    return this.http.get<string[]>(url+"users/nombresLikes/id/"+idFoto)
+  } 
 
   getAllImgVeter(): Observable<Foto[]>{
     return this.http.get<Foto[]>(url+"users/ImgVeterinario/")
@@ -127,5 +129,7 @@ export class UsuriosService {
   borrarNotificacionComentario(notifica:Notificacion):Observable<any>{
     return this.http.post<any>(url+"borrarNotificacionComentario/",notifica)
   }
-
+  enviarEmailConfirmacion(email:string): Observable<Comentario[]>{
+    return this.http.get<Comentario[]>(url+"email/"+email)
+  }
 }

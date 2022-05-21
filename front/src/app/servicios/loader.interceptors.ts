@@ -11,16 +11,23 @@ contador=0;
    constructor(public loadService:LoaderService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if(!req.url.includes("imagen")){
     
-    this.loadService.show()
     
-    return next.handle(req).pipe(
+      this.loadService.show()
+      
+      return next.handle(req).pipe(
+          
+          finalize( () => 
+          
+          this.loadService.hide())
+      );
+    }else{
+      return next.handle(req).pipe()
+    }
+
+
         
-        finalize( () => 
-        
-        this.loadService.hide())
-    );
-   ;
    
  
   }

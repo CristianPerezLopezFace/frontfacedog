@@ -3,23 +3,24 @@
     <h1>Actualizar usuarios!</h1>
     <form [formGroup]="contacForm">
    
-      
+      <p>id</p>
         <input type="text" id="contenedorEmail" formControlName="id" placeholder="id">
-        
+       <p>nombre</p> 
       <input type="text" id="contenedorNombre" formControlName="nameUs" placeholder="Nombre">
-     
+      <p>email</p>
       <input type="text" id="contenedorEmail" formControlName="email" placeholder="email">
-         
+      <p>contraseña</p> 
       <input type="text" formControlName="password" placeholder="contraseña">
-
+      <p>apellido</p>
       <input type="text" formControlName="apellido" placeholder="apellido">
-
+      <p>ciudad</p>
       <input type="text" formControlName="city" placeholder="ciudad">
-
+      <p>rol</p>
       <input type="text" formControlName="rol" placeholder="rol">
-
+      <p>descripcion</p>
       <input type="text" formControlName="descrip" placeholder="descripcion">
-      
+      <p>habilitado</p>
+      <input type="text" formControlName="habilitado" placeholder="habilitado">
         <br><br/> 
       <button type="submit" class="btn-send" (click)="updateUser()">Actualizar</button>
       <br><br/>

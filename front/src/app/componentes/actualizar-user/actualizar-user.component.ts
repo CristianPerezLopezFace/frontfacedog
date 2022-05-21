@@ -13,6 +13,7 @@ import { UsuriosService } from 'src/app/servicios/usurios.service';
 })
 export class ActualizarUserComponent implements OnInit {
 
+  
   contacForm:FormGroup
   usuario!:Usuario
   messageNoneId: boolean = false;
@@ -31,6 +32,7 @@ export class ActualizarUserComponent implements OnInit {
       city: new FormControl('',[]),
       rol: new FormControl('',[]),
       descrip: new FormControl('',[]),
+      habilitado: new FormControl('',[]),
       
   });
   
@@ -48,8 +50,9 @@ async updateUser(){
     let city = this.contacForm.controls["city"].value
     let rol =this.contacForm.controls["rol"].value
     let descrip = this.contacForm.controls["descrip"].value
+    let habilitado = this.contacForm.controls["habilitado"].value
     
-    this.usuarioService.update_User(id,new Usuario(password,name,apellido,city,email,rol,0,descrip)).subscribe( (data) => {
+    this.usuarioService.update_User(id,new Usuario(password,name,apellido,city,email,rol,0,descrip,habilitado)).subscribe( (data) => {
         this.message.createMessage(data)
     }, (error) => {
         this.message.createMessage(error.error.detail)
@@ -71,12 +74,11 @@ loadUser(){
         this.contacForm.controls["city"].setValue(getUser.ciudad ? getUser.ciudad : " ")
         this.contacForm.controls["rol"].setValue(getUser.roles)  
         this.contacForm.controls["descrip"].setValue(getUser.descripcion ? getUser.descripcion : "")
+        this.contacForm.controls["habilitado"].setValue(getUser.habilitado)
           
   },((erro) => { confirm(erro.error.detail)} ) )
  
 }
-
-
 
 
 

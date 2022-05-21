@@ -14,6 +14,7 @@ import { MessageService } from 'src/app/servicios/message.service';
 })
 export class LoginComponent implements OnInit {
   contacForm: FormGroup;
+  mostrarMensajeConfirmar=false
   constructor(
     private servicioUsuario: UsuriosService,
     private router: Router,
@@ -32,7 +33,14 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  
+  enviarEmail(){
+    let email = this.contacForm.controls['email'].value;
+    this.servicioUsuario.enviarEmailConfirmacion(email).subscribe(respuesta => {
+        this.message.createMessage(respuesta ? "Email enviado"  : "Hubo algun error inesperado")
+        this.mostrarMensajeConfirmar=false
+
+    })
+  }
 
   login() {
     let email = this.contacForm.controls['email'].value;
@@ -46,7 +54,7 @@ export class LoginComponent implements OnInit {
         (token) => {
           localStorage.setItem('token', token);
 
-          this.servicioUsuario.loging_User(login).subscribe((token) => {
+          this.servicioUsuario.loging_User(login).subscribe(() => {
                 
                 let rol=this.jwt.decodeToken(localStorage.getItem("token")!).sub.roles
                   if(rol == "Veterinario"){
@@ -62,7 +70,14 @@ export class LoginComponent implements OnInit {
                   }
           });
         },
-        (err) => this.message.createMessage(err.error.detail)
+        (err) =>{
+
+            if(err.error.detail === "Confirme su cuenta"){
+                this.mostrarMensajeConfirmar=true
+            }
+               this.message.createMessage(err.error.detail)
+        } 
+        
       );
     } else {
       this.message.createMessage('Rellena los campos requeridos');

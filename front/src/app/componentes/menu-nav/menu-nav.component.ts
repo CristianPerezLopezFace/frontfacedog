@@ -1,9 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Data, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Subscription, Observable, Subject } from 'rxjs';
-
-import { UserRegisterService } from 'src/app/servicios/user-register.service';
 import { Notificacion } from '../../clases/notificacion';
 import { UsuriosService } from '../../servicios/usurios.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,36 +26,35 @@ import { NotificacionComponent } from '../notificacion/notificacion.component';
 
 
 export class MenuNavComponent implements OnInit {
-  nombreUsuario: string = '';
+  nombreUsuario: string = this.jwt.decodeToken(localStorage.getItem('token')! ).sub.name;;
   dataFotoPrincipal = '';
   nombreNotifi = '';
   tipo = '';
   fechaNotifi!: Date;
   notificaciones: Notificacion[] = [];
-  rol = '';
+  emailUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
+      .email;
+  listaTemporal:any;
+  rol = this.jwt.decodeToken(localStorage.getItem('token')!).sub.roles;;
 
   repetir = true;
   closeResult = '';
 
   foto!: Foto;
-
-  recargarMenu: Subject<boolean> = this.userRegisterService.recargar;
+;
   constructor(
     public dialog: MatDialog,
-    private userRegisterService: UserRegisterService,
     private router: Router,
     private userService: UsuriosService,
     private jwt: JwtHelperService,
   ) {}
 
   ngOnInit() {
-    this.getPropiedadesToken();
+    this.getNotificaion()  
   }
 
   inicio(){
-    console.log(this.rol)
     if(this.rol == "Usuario"){  
-           
         this.router.navigate(['home/inicio'])
     }else if(this.rol == "Veterinario"){  
       this.router.navigate(['home/veterinario'])
@@ -79,15 +75,7 @@ export class MenuNavComponent implements OnInit {
     console.log("destruyendo el NAV")
 
   }
-  getPropiedadesToken() {
-    if (this.jwt.decodeToken(localStorage.getItem('token')!)) {
-      this.nombreUsuario = this.jwt.decodeToken(
-        localStorage.getItem('token')!
-      ).sub.name;
-      this.getNotificaion();
-      this.rol = this.jwt.decodeToken(localStorage.getItem('token')!).sub.roles;
-    }
-  }
+
 
 
   existToken() {
@@ -100,26 +88,14 @@ export class MenuNavComponent implements OnInit {
   }
 
   getNotificaion() {
-    let emailUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
-      .email;
-    let contador = 0;
-    this.userService.getNotificacion(emailUser).subscribe((e) => {
-      this.notificaciones = [];
-      for (let index = 0; index < e.length; index++) {
-        this.notificaciones.push(e[index]);
-      }
+  
+    this.userService.getNotificacion(this.emailUser).subscribe((notificaciones) => {
+       this.notificaciones = notificaciones
  
     });
-  }
-  // imagenPrincipal(){
-  //   let emailUser=this.jwt.decodeToken(localStorage.getItem("token") !).sub.email;
-  //   this.userService.getImagePrincipal(emailUser).subscribe((e) => {
-  //           if(e.foto != null){
 
-  //             this.dataFotoPrincipal=e.foto
-  //           }
-  //   })
-  // }
+  }
+
   openDialog(noti: Notificacion) {
     const dialogRef = this.dialog.open(NotificacionComponent  ,{
       width: '700px',
@@ -131,13 +107,10 @@ export class MenuNavComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-
-      console.log(`Dialog result: ${result}`);
+          this.ngOnInit()
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-     
-      this.ngOnInit() 
-    })
-    }
+  
+  }
+  
   }

@@ -18,6 +18,7 @@ export class RegistroComponent implements OnInit {
 
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  passwordConfirmFormControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
   nameFormControl = new FormControl('', [Validators.required]);
   apellidoFormControl = new FormControl('', []);
   descripcionFormControl = new FormControl('', [Validators.required]);
@@ -27,7 +28,7 @@ export class RegistroComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   // contacForm:FormGroup
   ciudad:string=""
-  tipocuenta=  [
+  tipoCuenta=  [
     
      "Usuario"
    ,
@@ -49,23 +50,28 @@ export class RegistroComponent implements OnInit {
    
   }
   addUser(){
-    let email=this.emailFormControl.value
-    let password = this.passwordFormControl.value
-    let name=this.nameFormControl.value
-    let surName = this.apellidoFormControl.value
-    // let city=this.elegirCiudad.value
-    let rol=this.elegirTipo.value[0]
-    let descrip=this.descripcionFormControl.value
-
-    let user=new Usuario(password,name,surName,"Granada",email,rol,0,descrip);
-    console.log(user)
-    this.serviceUser.create_user(user).subscribe((menssag) => {        
-      this.message.createMessage(menssag)
-      this.router.navigate([''])
-    },(error) => {
-        this.message.createMessage(error.error.detail)
-    })
     
+    if(this.passwordConfirmFormControl.value === this.passwordFormControl.value){
+
+      let email=this.emailFormControl.value
+      let password = this.passwordFormControl.value
+      let name=this.nameFormControl.value
+      let surName = this.apellidoFormControl.value
+      let city=this.elegirCiudad.value
+      let rol=this.elegirTipo.value ? this.elegirTipo.value : "Usuario"
+      let descrip=this.descripcionFormControl.value
+  
+      let user=new Usuario(password,name,surName,"Granada",email.trim(),rol,0,descrip,0);
+      console.log(user)
+      this.serviceUser.create_user(user).subscribe((menssag) => {        
+        this.message.createMessage(menssag)
+        this.router.navigate([''])
+      },(error) => {
+          this.message.createMessage(error.error.detail)
+      })
+    }else{
+      this.message.createMessage("las contraseñas deben coincidir")
+    }
   }
   login(){
     

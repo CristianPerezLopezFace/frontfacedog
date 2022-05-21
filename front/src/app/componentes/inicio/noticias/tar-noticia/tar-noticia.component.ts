@@ -31,7 +31,7 @@ export class TarNoticiaComponent implements OnInit {
   sinAmigos: boolean = false;
 
   mostrar: boolean = false;
-  likes:[]=[]
+
   nameUserNoticia = ""
   nombresLike:string[]=[]
 
@@ -54,8 +54,7 @@ export class TarNoticiaComponent implements OnInit {
   ngOnInit(): void {
     this.getImagen();
     this.getNombreUsuario(this.foto.email)
-    this.likes = this.foto.likes
-    this.getNombresLike()
+    
   
   }
 
@@ -139,15 +138,12 @@ export class TarNoticiaComponent implements OnInit {
     this.router.navigate(['/amigos']);
   
   }
-  getNombresLike(){
-      this.nombresLike=[]
-      
-      this.likes.forEach(id => {
-        
-          this.userService.get_one_user_by_id(id).subscribe(user => {
-              this.nombresLike.push(user.name)
-          })
+  getNombresLike(idFoto:number){
+      this.nombresLike=[]   
+      this.userService.getNombresLikesFoto(idFoto).subscribe(nombres => {
+          this.nombresLike = nombres
       })
+      
   }
   openDialog(foto:Foto) {
     const dialogRef = this.dialog.open(AmpliarFotoComponent,{

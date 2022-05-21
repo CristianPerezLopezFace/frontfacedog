@@ -34,6 +34,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   closeResult = '';
 
   usuariosConectados=[]
+
+  ultimoScroll=0
   @Input()
   consulta!: boolean;
 
@@ -52,11 +54,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.contadorMenss = this.document.doc.length;
 
     this.newDoc();
-    // if (this.consulta) {
-    //   this.loadDoc('chat consultas');
-    // } else {
-    //   this.loadDoc('chat global');
-    // }
+
     this.loadDoc('chat');
 
     setTimeout(() => {this.scroll()}, 100);
@@ -110,13 +108,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
     
 
-  comprobarUserConectado(email:string){
-      // let conect = false
-      // if(this.document.chatVeterinario.find(userEmail => userEmail = email)) {
-      //     conect =true
-      // }
-      // return conect
-  }
 
   newDoc() {
     let nameUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
@@ -148,6 +139,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   scroll() {
     let contenedorChat = document.getElementsByName('tarjet')[0];
     contenedorChat.scrollTop = contenedorChat.scrollHeight;
+    this.ultimoScroll=contenedorChat.scrollHeight
   }
+  mensajesSinVer() {
+    let contenedorChat = document.getElementsByName('tarjet')[0].scrollHeight;
+    return this.ultimoScroll < contenedorChat 
+  }
+
 
 }
