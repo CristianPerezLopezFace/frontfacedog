@@ -47,23 +47,30 @@
 @include media-breakpoint-down(sm) {
   
   .btns{
-    display:block !important;
-    justify-content: space-around !important;
+    //display: flex !important;
+    // justify-content: space-around !important;
     text-align-last: justify !important;
+    overflow: scroll !important;
   }
   .noticiasYchat{
     display: block !important;
+    height: 100vh !important;
   }
   .centro{
-    width: 100vh !important;
-    height: 50rem !important;
+    width: 100% !important;
+    height: 40rem !important;
     border: solid 3px $bordes !important;
+   
+    margin-bottom: 2rem !important;
+
   }
   .divIzq{
+    width: -webkit-fill-available !important;
+
   }
   
   .inicio{
-    width: 100vh !important;
+    width: 100% !important;
   }
 
 }
@@ -75,7 +82,7 @@
 }
 .centro{
   margin-left: 1rem;
-  width: 60%;
+  width: -webkit-fill-available !important;
 }
 
 .inicio{
@@ -101,8 +108,8 @@
 
 
 .chat {
-  width: 40%;
   border-left: 3px solid $bordes;
+  width: -webkit-fill-available !important;
 
 }
 

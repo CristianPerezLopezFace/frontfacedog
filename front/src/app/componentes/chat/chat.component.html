@@ -67,7 +67,7 @@
   >
     <mat-label>Clearable input</mat-label>
 
-    <input matInput  (keydown)="levantaTecla($event)"  type="text" [(ngModel)]="value"  />
+    <input matInput class="input"  (keydown)="levantaTecla($event)"  type="text" [(ngModel)]="value"  />
 
     <button
     *ngIf="value"

@@ -9,9 +9,9 @@ import { Notificacion } from '../clases/notificacion';
 import { Comentario } from '../clases/comentario';
 
 
-const  url = "https://facedogapirest.herokuapp.com/";      
+// const  url = "https://facedogapirest.herokuapp.com/";      
 
-//  const  url = "http://localhost:8000/";      
+ const  url = "http://localhost:8000/";      
 @Injectable({
   providedIn: 'root'
 })
@@ -64,8 +64,8 @@ export class UsuriosService {
  addLikeComentario(id_foto:number,id_user:number,posicion:number) : Observable<any>{
     return this.http.get<any>(url+"users/addLikeComentario/"+id_foto+"/"+id_user+"/"+posicion)
   } 
-  getNombresLikesFoto(idFoto:number) : Observable<string[]>{
-    return this.http.get<string[]>(url+"users/nombresLikes/id/"+idFoto)
+  getNombresLikesFoto(idFoto:number) : Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(url+"users/nombresLikes/id/"+idFoto)
   } 
 
   getAllImgVeter(): Observable<Foto[]>{

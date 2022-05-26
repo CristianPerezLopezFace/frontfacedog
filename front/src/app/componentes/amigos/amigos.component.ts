@@ -19,6 +19,7 @@ export class AmigosComponent implements OnInit {
   amigos:number[]=[]
   id_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.id;
   ciudad_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.city
+  palabraBuscar=""
 
   constructor(private message:MessageService,private comunicacion:ComunicacionComponentsService,private userService:UsuriosService,private router:Router,private jwt:JwtHelperService) { }
 
@@ -46,18 +47,34 @@ export class AmigosComponent implements OnInit {
               this.usuarios.push(usuario)
            }
          })
-         console.log("hola 1")
     })
   }
   async getAllUserByCity(){
 
-    await this.getAllUsers()
-    console.log("hola 2")
+    this.sonAmigos=false
+    this.userService.getAllUsers().subscribe(usuarios =>{
+        this.usuarios=[]
+         usuarios.forEach(usuario => {
+           if(usuario.ciudad == this.ciudad_user){
+              this.usuarios.push(usuario)
+           }
+         })
+    }) 
+ 
+  }
+  async buscarAmigo(){
 
-    this.usuarios.filter(usuario => {
-      console.log(usuario.ciudad,this.ciudad_user)
-      usuario.ciudad == this.ciudad_user
-    })
+    this.sonAmigos=false
+    this.userService.getAllUsers().subscribe(usuarios =>{
+        this.usuarios=[]
+         usuarios.forEach(usuario => {
+           console.log(this.palabraBuscar)
+           if(usuario.name == this.palabraBuscar){
+              this.usuarios.push(usuario)
+           }
+         })
+    }) 
+ 
   }
   solicitarAmistad(email:string){
    

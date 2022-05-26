@@ -6,7 +6,7 @@
 
 @include media-breakpoint-down(md) {
   .scroll {
-    width: 90% !important;
+ 
     margin-left: 0rem !important;
     height: 100vh !important;
   
@@ -26,7 +26,7 @@
 .scroll {
   border-radius: 15px;
   height: 100vh;
-  max-width: 100vh;
+ 
   overflow:scroll; 
 }
 

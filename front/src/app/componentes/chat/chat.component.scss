@@ -6,7 +6,7 @@
 @include media-breakpoint-down(sm) {
   .contenedorChat{
 
-    width: 100vh !important;
+   
     
   }
 }
@@ -21,6 +21,9 @@
     color: rgb(0,0,0,0.5);
     text-transform: capitalize;
 
+  }
+  .input{
+   
   }
   .nomYfecha{
     display: flex;

@@ -11,6 +11,7 @@ import { MessageService } from 'src/app/servicios/message.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AmpliarFotoComponent } from 'src/app/componentes/ampliar-foto/ampliar-foto.component';
 import { DocumentServiceService } from 'src/app/servicios/documentService.service';
+import { Usuario } from 'src/app/clases/usuario';
 @Component({
   selector: 'app-tar-noticia',
   templateUrl: './tar-noticia.component.html',
@@ -33,7 +34,7 @@ export class TarNoticiaComponent implements OnInit {
   mostrar: boolean = false;
 
   nameUserNoticia = ""
-  nombresLike:string[]=[]
+  nombresLike:Usuario[]=[]
 
   @Input()
   foto!: Foto;
@@ -139,6 +140,7 @@ export class TarNoticiaComponent implements OnInit {
   
   }
   getNombresLike(idFoto:number){
+      console.log("ohlalaa")
       this.nombresLike=[]   
       this.userService.getNombresLikesFoto(idFoto).subscribe(nombres => {
           this.nombresLike = nombres

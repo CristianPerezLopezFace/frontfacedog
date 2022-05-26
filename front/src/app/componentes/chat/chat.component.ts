@@ -110,8 +110,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
 
   newDoc() {
-    let nameUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
-      .name;
+
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
     let token = this.jwt.decodeToken(localStorage.getItem('token')!);
     let chatVeter:Doc[]=[]
@@ -120,12 +119,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     let docs: Doc[] = [];
     docs.push(doc);
     let document;
-
-    // if (this.consulta) {
-    //   document = new Document('chat consultas', docs, token, chatVeter);
-    // } else {
-    //   document = new Document('chat global', docs, token, chatVeter);
-    // }
    document = new Document('chat', docs, token, chatVeter);
 
     this.documentService.newDocument(document);

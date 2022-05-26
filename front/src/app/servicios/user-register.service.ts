@@ -66,7 +66,7 @@ export class UserRegisterService {
     if(this.jwt.isTokenExpired(token)){
         localStorage.removeItem("token")
         
-        this.message.createMessage("el token ha exiprado")
+        this.message.createMessage("la sesion ha exiprado")
         this.router.navigate(['']);
     }else{
     }

@@ -56,7 +56,7 @@ export class NoticiasComponent implements OnInit, OnDestroy{
         this.getImgVeter()
       }else{
   
-        this.getNoticias();
+        this.getNoticiasPaginadas(0,5);
       }
     }
   }
@@ -73,15 +73,16 @@ export class NoticiasComponent implements OnInit, OnDestroy{
 
   getNoticias() {
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
-    this.userService.getAmigos(email).subscribe((e) => {
-      this.misAmigos = e;
+    this.userService.getAmigos(email).subscribe((amigos) => {
+      console.log(amigos,"amigos del usuario")
+      this.misAmigos = amigos;
       if (this.misAmigos.length == 0) {
         this.sinAmigos = true;
       }
-      this.misAmigos.forEach((e) => {
-        this.userService.getAllImg(e.id_fotos).subscribe((fotos) => {
-          fotos.forEach((e) => {
-            this.misNoticias.push(e);
+      this.misAmigos.forEach((amigo) => {
+        this.userService.getAllImg(amigo.id_fotos).subscribe((fotos) => {
+          fotos.forEach((foto) => {
+            this.misNoticias.push(foto);
           });
         });
       });
@@ -90,15 +91,18 @@ export class NoticiasComponent implements OnInit, OnDestroy{
   
   getNoticiasPaginadas(skip:number,limit:number) {
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
-    this.userService.getAmigos(email).subscribe((e) => {
-      this.misAmigos = e;
+    this.userService.getAmigos(email).subscribe((amigos) => {
+      this.misAmigos = amigos;
       if (this.misAmigos.length == 0) {
           this.sinAmigos = true;
       }
-      this.misAmigos.forEach((e) => {
-        this.userService.getImgPaginadas(skip,limit,e.email).subscribe((fotosAndTotal) => {
+      console.log(this.misAmigos)
+
+      this.misAmigos.forEach((amigo) => {
+        console.log(amigo.id_fotos)
+        this.userService.getImgPaginadas(skip,limit,amigo.id_fotos).subscribe((fotosAndTotal) => {
                 
-                fotosAndTotal.user.forEach((img: Foto) => {
+                fotosAndTotal.users.forEach((img: Foto) => {
                 this.misNoticias.push(img);
           });
         });
