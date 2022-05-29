@@ -15,13 +15,11 @@
 }
 @include media-breakpoint-down(sm) {
   .scroll {
-
     margin: 1rem !important;
-  
+    height: 150vh !important;
   }
 
 }
-
 
 .scroll {
   border-radius: 15px;

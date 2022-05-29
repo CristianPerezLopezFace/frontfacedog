@@ -12,6 +12,10 @@
 mat-form-field{
     width: 100%;
 }
+.noticia{
+  border-radius: 7px;
+  border: solid 3px $bordes;
+}
 p{
     color: $oscuro;
     text-transform: capitalize;

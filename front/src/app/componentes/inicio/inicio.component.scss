@@ -3,114 +3,26 @@
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../assets/styles2.scss";
 
-@include media-breakpoint-down(xl) {
-
-}
-@include media-breakpoint-down(lg) {
-  .inicio{
-    display: grid !important;
-    align-items: flex-start;
-  }
-  .btns{
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    display: flex !important;
-    justify-content: space-around !important;
-  }
+.inicio{
+  display: flex;
   
-  .divIzq{
-    width: 100%  !important;
-    
-   
-  }
-
+  margin: 0.7rem;
 }
-@include media-breakpoint-down(md) {
-  .inicio{
-    display: grid !important;
-   
-  }
-  .btns{
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
-    display: flex !important;
-    justify-content: space-around !important;
-  }
-  .divIzq{
-  }
+.noticiasYchat{
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+
   .centro{
     width: 50%;
   }
 
-  
-}
-@include media-breakpoint-down(sm) {
-  
-  .btns{
-    //display: flex !important;
-    // justify-content: space-around !important;
-    text-align-last: justify !important;
-    overflow: scroll !important;
+  .chat{
+    width: 40%;
   }
-  .noticiasYchat{
-    display: block !important;
-    height: 100vh !important;
-  }
-  .centro{
-    width: 100% !important;
-    height: 40rem !important;
-    border: solid 3px $bordes !important;
-   
-    margin-bottom: 2rem !important;
-
-  }
-  .divIzq{
-    width: -webkit-fill-available !important;
-
-  }
-  
-  .inicio{
-    width: 100% !important;
-  }
-
 }
-
-.noticiasYchat{
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-.centro{
-  margin-left: 1rem;
-  width: -webkit-fill-available !important;
-}
-
-.inicio{
-  display: flex;
-  justify-content: space-around;
-  
-}
-
 .divIzq{
-  border-right: 3px solid $bordes;
-  width: 20rem;
-}
-
-.imgVeter {
-  border-radius: 10px;
-  
-}
-
-.img {
-  width: 300px;
-  height: 200px;
-}
-
-
-.chat {
-  border-left: 3px solid $bordes;
-  width: -webkit-fill-available !important;
-
+  width: 20%;
 }
 
   
@@ -139,6 +51,11 @@ mat-icon {
    border-bottom: solid 2px black;
 }
 
+.botones{
+  display: flex !important;
+  justify-content: space-between;
+}
+
 
 p,
 button,
@@ -147,4 +64,128 @@ div {
   font-size: large;
   text-align: center;
 }
+
+
+@include media-breakpoint-down(lg) {
+  .inicio{
+    display: grid !important;
+    align-items: flex-start;
+  }
+  .btns{
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    display: flex !important;
+    justify-content: space-around !important;
+  }
+  
+  .divIzq{
+    width: 100%  !important;
+  }
+  .noticiasYchat{
+    width: 100% !important;
+  }
+}
+@include media-breakpoint-down(sm) {
+    .inicio{
+      margin-left: 1rem !important;
+      margin-right: 3rem !important;
+    }
+    .noticiasYchat{
+      display: block !important;
+    }
+    .chat{
+      width: 100% !important;
+    }
+    .centro{
+      width: 100% !important;
+      
+    }
+}
+// @include media-breakpoint-down(md) {
+//   .inicio{
+//     display: grid !important;
+   
+//   }
+//   .btns{
+//     margin-top: 0.5rem;
+//     margin-bottom: 1rem;
+//     display: flex !important;
+//     justify-content: space-around !important;
+//   }
+//   .divIzq{
+//   }
+//   .centro{
+//     width: 50%;
+//   }
+
+  
+// }
+// @include media-breakpoint-down(sm) {
+  
+//   .btns{
+//     //display: flex !important;
+//     // justify-content: space-around !important;
+//     text-align-last: justify !important;
+//     overflow: scroll !important;
+//   }
+//   .noticiasYchat{
+//     display: block !important;
+//     height: 100vh !important;
+//   }
+//   .centro{
+//     width: 100% !important;
+//     height: 40rem !important;
+//     border: solid 3px $bordes !important;
+   
+//     margin-bottom: 2rem !important;
+
+//   }
+//   .divIzq{
+//     width: -webkit-fill-available !important;
+
+//   }
+  
+//   .inicio{
+//     width: 100% !important;
+//   }
+
+// }
+
+// .noticiasYchat{
+//   display: flex;
+//   justify-content: space-around;
+//   width: 100%;
+// }
+// .centro{
+//   margin-left: 1rem;
+//   width: -webkit-fill-available !important;
+// }
+
+// .inicio{
+//   display: flex;
+//   justify-content: space-around;
+  
+// }
+
+// .divIzq{
+//   border-right: 3px solid $bordes;
+//   width: 20rem;
+// }
+
+// .imgVeter {
+//   border-radius: 10px;
+  
+// }
+
+// .img {
+//   width: 300px;
+//   height: 200px;
+// }
+
+
+// .chat {
+//   border-left: 3px solid $bordes;
+//   width: -webkit-fill-available !important;
+
+
 

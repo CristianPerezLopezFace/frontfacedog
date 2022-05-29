@@ -7,8 +7,6 @@ import { UsuriosService } from '../../../servicios/usurios.service';
 import { formatDate } from '@angular/common';
 import { Notificacion } from 'src/app/clases/notificacion';
 import { Router } from '@angular/router';
-import { MessageService } from 'src/app/servicios/message.service';
-import { DocumentServiceService } from 'src/app/servicios/documentService.service';
 import { UserRegisterService } from 'src/app/servicios/user-register.service';
 
 @Component({
@@ -74,7 +72,6 @@ export class NoticiasComponent implements OnInit, OnDestroy{
   getNoticias() {
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
     this.userService.getAmigos(email).subscribe((amigos) => {
-      console.log(amigos,"amigos del usuario")
       this.misAmigos = amigos;
       if (this.misAmigos.length == 0) {
         this.sinAmigos = true;
@@ -96,10 +93,7 @@ export class NoticiasComponent implements OnInit, OnDestroy{
       if (this.misAmigos.length == 0) {
           this.sinAmigos = true;
       }
-      console.log(this.misAmigos)
-
       this.misAmigos.forEach((amigo) => {
-        console.log(amigo.id_fotos)
         this.userService.getImgPaginadas(skip,limit,amigo.id_fotos).subscribe((fotosAndTotal) => {
                 
                 fotosAndTotal.users.forEach((img: Foto) => {

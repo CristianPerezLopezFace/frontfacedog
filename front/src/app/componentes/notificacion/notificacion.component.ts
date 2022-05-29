@@ -125,11 +125,13 @@ export class NotificacionComponent implements OnInit {
     let emailUser=this.jwt.decodeToken(localStorage.getItem("token") !).sub.id_fotos;
     let tipoNoti="comentario en foto"
     let notificacion=new Notificacion(id,emailUser,nameUser,tipoNoti,emailDestinatario,new Date())
-  
-    this.userService.setNotificaion(notificacion).subscribe(e =>{
-        this.ngOnInit()
+    if(emailDestinatario != emailUser){
+
+      this.userService.setNotificaion(notificacion).subscribe(e =>{
         this.message.createMessage("Respuesta realizada")
-    })
+      })
+    }
+    this.ngOnInit()
    
   }
   aceptarPeticion(){

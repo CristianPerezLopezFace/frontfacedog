@@ -28,53 +28,77 @@
           <div>
             <app-subir-foto></app-subir-foto>
           </div>
-          <div>
+          <div class="d-flex botones">
+            <div>
 
-            <button
-              class="button"
-              mat-button
-              [disableRipple]="true"  
-              [ngClass]="botonClicado ===  'galeria' ? 'buttonSelected' : ''"          
-              (click)="mostrarGale()"
-              >
-                Galeria <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
-            </button>
+              <button
+                class="button"
+                mat-button
+                [disableRipple]="true"  
+                [ngClass]="botonClicado ===  'galeria' ? 'buttonSelected' : ''"          
+                (click)="mostrarGale()"
+                >
+                Galeria
+              </button>
+            </div>
+            <div>
+
+              <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+            </div>
           </div>
-          <div>
+          <div class="d-flex botones">
+            <div>
 
-            <button
-              class="button"
-              mat-button
-              [disableRipple]="true"  
-              [ngClass]="botonClicado ===  'galeria' ? 'buttonSportsSelected' : ''"          
-              (click)="consultas()"
-              >
-                Consultas <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
-            </button>
+              <button
+                class="button"
+                mat-button
+                [disableRipple]="true"  
+                [ngClass]="botonClicado ===  'galeria' ? 'buttonSportsSelected' : ''"          
+                (click)="consultas()"
+                >
+                  Consultas 
+                </button>
+              </div>
+              <div>
+                <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+
+             </div>
+
           </div>
-          <div>
+          <div class="d-flex botones">
+            <div>
+                <button
+                  class="button"
+                  mat-button
+                  [disableRipple]="true"  
+                  [ngClass]="botonClicado ===  'galeria' ? 'buttonSportsSelected' : ''"          
+                  (click)="personas()"
+                  >
+                  Usuarios 
+                  </button>
+              </div>
+              <div>
+                  <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
 
-            <button
-              class="button"
-              mat-button
-              [disableRipple]="true"  
-              [ngClass]="botonClicado ===  'galeria' ? 'buttonSportsSelected' : ''"          
-              (click)="personas()"
-              >
-               Usuarios <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
-            </button>
+              </div>
           </div>
-           <div>
+           <div class="d-flex botones">
+             <div>
+                <button
+                  class="button"
+                  mat-button
+                  [disableRipple]="true"
+                  [ngClass]="botonClicado ===  'chat' ? 'buttonSportsSelected' : ''"          
+                  (click)="activarChat()"
+                  >
+                    Chat	
+                    </button>
+                    
+                </div>
+                <div>
+                    <mat-icon style="margin-left: 1rem; color: #214ea8;"> chat</mat-icon>
 
-             <button
-               class="button"
-               mat-button
-               [disableRipple]="true"
-               [ngClass]="botonClicado ===  'chat' ? 'buttonSportsSelected' : ''"          
-               (click)="activarChat()"
-               >
-                 Chat	<mat-icon style="margin-left: 1rem; color: #214ea8;"> chat</mat-icon>
-             </button>
+             </div>
            </div>
           </div>
 

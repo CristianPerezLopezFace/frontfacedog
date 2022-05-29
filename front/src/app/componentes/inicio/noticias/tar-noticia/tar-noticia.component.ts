@@ -28,6 +28,7 @@ export class TarNoticiaComponent implements OnInit {
   comentarOk = false;
   value: string = ' ';
   id_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.id;
+  email_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
   ok: boolean | undefined;
   sinAmigos: boolean = false;
 
@@ -94,26 +95,32 @@ export class TarNoticiaComponent implements OnInit {
         this.ngOnInit();
         this.message.createMessage('Comentario realizado');
       });
-      this.notificarComentario(emailDestinatario, idFoto);
+      
+      if(this.email_user != emailDestinatario){
+         this.notificarComentario(emailDestinatario, idFoto);
+      }
     }
   }
 
   notificarComentario(emailDestinatario: string, id: number) {
-    let nameUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
-      .name;
-    let emailUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
-      .id_fotos;
-    let tipoNoti = 'comentario en foto';
-    let notificacion = new Notificacion(
-      id,
-      emailUser,
-      nameUser,
-      tipoNoti,
-      emailDestinatario,
-      new Date()
-    );
-
-    this.userService.setNotificaion(notificacion).subscribe((e) => {});
+      let nameUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
+        .name;
+      let emailUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
+        .id_fotos;
+      let tipoNoti = 'comentario en foto';
+      console.log(emailUser,emailDestinatario)
+      if(emailUser != emailDestinatario){
+      
+            let notificacion = new Notificacion(
+              id,
+              emailUser,
+              nameUser,
+              tipoNoti,
+              emailDestinatario,
+              new Date()
+            );
+            this.userService.setNotificaion(notificacion).subscribe((e) => {});
+      }
   }
 
   like(id_foto: number) { 

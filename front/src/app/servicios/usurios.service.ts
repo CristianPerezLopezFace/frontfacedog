@@ -9,9 +9,9 @@ import { Notificacion } from '../clases/notificacion';
 import { Comentario } from '../clases/comentario';
 
 
-// const  url = "https://facedogapirest.herokuapp.com/";      
+const  url = "https://facedogapirest.herokuapp.com/";      
 
- const  url = "http://localhost:8000/";      
+// const  url = "http://localhost:8000/";      
 @Injectable({
   providedIn: 'root'
 })
@@ -107,7 +107,6 @@ export class UsuriosService {
 
 
   setNotificaion(notificaion:Notificacion): Observable<any>{
-    console.log(notificaion)
     return this.http.post<any>(url+"crearNotificacion/",notificaion)
   }
   getNotificacion(email:string): Observable<[Notificacion]>{

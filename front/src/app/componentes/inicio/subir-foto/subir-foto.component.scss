@@ -11,7 +11,11 @@
 
     
 }
-
+.botones{
+  display: flex !important;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
 
 .contenido{
     font-family: $tipoLetraPrimary;

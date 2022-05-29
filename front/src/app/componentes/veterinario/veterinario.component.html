@@ -34,7 +34,16 @@
     </div>
   </ng-template>
   
+  <div class="d-felx botones">
+    <div>
 
+      <button mat-button [disableRipple]="true" *ngIf="!anuncio" type="submit" class="button" (click)="open(content)">Veterinario 
+      </button>
+    </div>
+    <div>
+      <mat-icon style=" color: #214ea8;">  local_hospital</mat-icon>
+          
+    </div>
+</div>
   
-    <button mat-button [disableRipple]="true" *ngIf="!anuncio" type="submit" class="button" (click)="open(content)">Veterinario 	<mat-icon style=" color: #214ea8;">  local_hospital</mat-icon></button>
     <a mat-button [disableRipple]="true" *ngIf="anuncio" type="submit" class="button" href="https://www.clinicamiguelcabello.es/">Sitio web</a>
