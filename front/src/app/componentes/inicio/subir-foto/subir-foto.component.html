@@ -29,25 +29,20 @@
 </div>
     </ng-template>
 
-      <div class="d-felx botones">
-            <div>
+      <div class="d-felx felx-row botones">
+            
 
                   <button mat-button [disableRipple]="true" type="submit"  class="button" (click)="open(content)" *ngIf="!veterinario">Foto 
+                        <mat-icon style="margin-left: 1rem; color: #214ea8;">add_a_photo</mat-icon>
                   </button>
-            </div>
-            <div>
-                  <mat-icon style="margin-left: 1rem; color: #214ea8;">add_a_photo</mat-icon>
+           
 
-            </div>
       </div>
-      <div class="d-felx botones">
-            <div>
+      <div class="d-felx felx-row botones">
+            
 
                   <button mat-button [disableRipple]="true" class="button" (click)="open(content)" *ngIf="veterinario">Anunciate</button>
-            </div>
-            <div>
-                  
-            </div>
+           
       </div>
 
 

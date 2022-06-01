@@ -23,6 +23,7 @@
 }
 .divIzq{
   width: 20%;
+  background-color: rgba($claro-color, 0.2);
 }
 
   
@@ -31,7 +32,8 @@
     display: inline;
     text-overflow: ellipsis;
     letter-spacing: 0.5px;
-    border-bottom: 3px solid white;
+    background-color: $claroA;
+    border-bottom: 3px solid $oscuro;
 
 
   &:hover {
@@ -54,8 +56,13 @@ mat-icon {
 .botones{
   display: flex !important;
   justify-content: space-between;
-}
+  
+  
 
+}
+.btns{
+  margin-top: 0.7rem;
+}
 
 p,
 button,
@@ -88,7 +95,7 @@ div {
 @include media-breakpoint-down(sm) {
     .inicio{
       margin-left: 1rem !important;
-      margin-right: 3rem !important;
+      margin-right: 1rem !important;
     }
     .noticiasYchat{
       display: block !important;

@@ -46,7 +46,7 @@ export class NoticiasComponent implements OnInit, OnDestroy{
 
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.id_user = this.jwt.decodeToken(localStorage.getItem('token')!).sub.id;
     if(this.userRegisterService.tokenExpired(localStorage.getItem("token")!)){
 
@@ -54,54 +54,52 @@ export class NoticiasComponent implements OnInit, OnDestroy{
         this.getImgVeter()
       }else{
   
-        this.getNoticiasPaginadas(0,5);
+       await  this.getNoticias();
       }
     }
   }
-  getImgVeter(){
+  async getImgVeter(){
       
     let nameEmail=this.jwt.decodeToken(localStorage.getItem("token")!).sub.email
-    this.userService.getAllImgVeterByUser(nameEmail!).subscribe(fotos => {
-      fotos.forEach((e) => {
-        this.misNoticias.push(e);
-      });
-    })
+    let fotos = await this.userService.getAllImgVeterByUser(nameEmail!).toPromise()
+    fotos.forEach((foto) => {
+      this.misNoticias.push(foto);
+    });
+    
    
   }
 
-  getNoticias() {
+  async getNoticias() {
+    this.misNoticias=[]
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
-    this.userService.getAmigos(email).subscribe((amigos) => {
-      this.misAmigos = amigos;
-      if (this.misAmigos.length == 0) {
-        this.sinAmigos = true;
-      }
-      this.misAmigos.forEach((amigo) => {
-        this.userService.getAllImg(amigo.id_fotos).subscribe((fotos) => {
-          fotos.forEach((foto) => {
-            this.misNoticias.push(foto);
-          });
+    let amigos = await this.userService.getAmigos(email).toPromise()
+    this.misAmigos = amigos;
+    if (this.misAmigos.length == 0) {
+      this.sinAmigos = true;
+    }
+    this.misAmigos.forEach((amigo) => {
+      this.userService.getAllImg(amigo.id_fotos).subscribe((fotos) => {
+        fotos.forEach((foto) => {
+          this.misNoticias.push(foto);
         });
       });
     });
+    
   }
   
-  getNoticiasPaginadas(skip:number,limit:number) {
+  async getNoticiasPaginadas(skip:number,limit:number) {
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
-    this.userService.getAmigos(email).subscribe((amigos) => {
-      this.misAmigos = amigos;
-      if (this.misAmigos.length == 0) {
-          this.sinAmigos = true;
-      }
-      this.misAmigos.forEach((amigo) => {
-        this.userService.getImgPaginadas(skip,limit,amigo.id_fotos).subscribe((fotosAndTotal) => {
-                
-                fotosAndTotal.users.forEach((img: Foto) => {
-                this.misNoticias.push(img);
+    let amigos = await this.userService.getAmigos(email).toPromise()
+    this.misAmigos = amigos;
+    this.sinAmigos = this.misAmigos.length == 0;  
+    this.misAmigos.forEach(async (amigo) => {
+          let fotosAndTotal = await this.userService.getImgPaginadas(skip,limit,amigo.id_fotos).toPromise()        
+          fotosAndTotal.users.forEach((img: Foto) => {
+              this.misNoticias.push(img);
           });
-        });
       });
-    });
+    
+    
   }
 
   activarComentarios() {
@@ -144,25 +142,20 @@ export class NoticiasComponent implements OnInit, OnDestroy{
   
   }
 
-  like(id_foto: number) {
+  async like(id_foto: number) {
     this.ok = true;
-    this.userService.addLikeImg(id_foto, this.id_user).subscribe((e) => {
-      let a = e;
-      this.misNoticias = [];
-      this.getNoticias();
-    });
+    await this.userService.addLikeImg(id_foto, this.id_user).toPromise()
+    this.getNoticias();
+   
   }
 
-  likeComent(id_foto: number, emailUser: string, posicion: number) {
+  async likeComent(id_foto: number, emailUser: string, posicion: number) {
     this.ok = true;
-    this.userService.get_one_user(emailUser).subscribe((user) => {
-      this.userService
-        .addLikeComentario(id_foto, user.id, posicion)
-        .subscribe((e) => {
-          this.misNoticias = [];
-          this.getNoticias();
-        });
-    });
+    let user = await this.userService.get_one_user(emailUser).toPromise()
+    this.userService.addLikeComentario(id_foto, user.id, posicion).toPromise()
+    this.getNoticias();
+      
+    
   }
 
   amigos() {

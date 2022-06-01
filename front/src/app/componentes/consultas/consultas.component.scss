@@ -23,16 +23,8 @@
 }
 .divIzq{
   width: 20%;
-
-  .card{
-    width: 100%;
-  }
+  background-color: rgba($claro-color, 0.2);
 }
-.botones{
-  display: flex !important;
-  justify-content: space-between;
-}
-
 
   
   .button {
@@ -40,7 +32,8 @@
     display: inline;
     text-overflow: ellipsis;
     letter-spacing: 0.5px;
-    border-bottom: 3px solid white;
+    background-color: $claroA;
+    border-bottom: 3px solid $oscuro;
 
 
   &:hover {
@@ -60,6 +53,16 @@ mat-icon {
    border-bottom: solid 2px black;
 }
 
+.botones{
+  display: flex !important;
+  justify-content: space-between;
+  
+  
+
+}
+.btns{
+  margin-top: 0.7rem;
+}
 
 p,
 button,
@@ -90,6 +93,10 @@ div {
   }
 }
 @include media-breakpoint-down(sm) {
+    .inicio{
+      margin-left: 1rem !important;
+      margin-right: 3rem !important;
+    }
     .noticiasYchat{
       display: block !important;
     }
@@ -98,7 +105,14 @@ div {
     }
     .centro{
       width: 100% !important;
+      
     }
 }
+.imgVeter{
+  margin: auto;
+  width: 10rem;
+  height: 10rem;
+}
+
 
 

@@ -15,7 +15,7 @@
 }
 @include media-breakpoint-down(sm) {
   .scroll {
-    margin: 1rem !important;
+    margin: 1rem 0rem !important;
     height: 150vh !important;
   }
 
@@ -24,7 +24,7 @@
 .scroll {
   border-radius: 15px;
   height: 100vh;
- 
+  background-color: rgba($claro-color, 0.2);
   overflow:scroll; 
 }
 

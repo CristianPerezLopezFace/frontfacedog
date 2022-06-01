@@ -14,7 +14,7 @@
 .botones{
   display: flex !important;
   justify-content: space-between;
-  margin-right: 1rem;
+
 }
 
 .contenido{
@@ -27,7 +27,7 @@
     margin-bottom: 1rem;
     padding: 0.5rem;
     font-family: $tipoLetraPrimary;
-
+  
     background-color: $oscuro;
 }
 .foter{
@@ -54,7 +54,9 @@ img{
     display: inline;
     text-overflow: ellipsis;
     letter-spacing: 0.5px;
-
+    background-color: $claroA;
+    border-bottom: 3px solid $oscuro;
+   
     &:hover {
       background-color: rgba($claro-color, 0.2);
       border-bottom: 3px solid black;

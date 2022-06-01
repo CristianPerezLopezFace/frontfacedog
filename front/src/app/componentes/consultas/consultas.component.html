@@ -11,6 +11,7 @@
                 src="{{srcFotoAnuncio}}"
                 class="card-img-top imgVeter"
                 contenteditable="imgCard"
+
               />
                 <p class="card-text">
                   {{nombre}}
@@ -22,15 +23,15 @@
         </div>
         <div class="card-body">
         
-          <div class="btns">
+          <div class="btns d-felx flex-column">
               <div>
                 <app-veterinario></app-veterinario>
               </div>
               <div>
                 <app-subir-foto></app-subir-foto>
               </div>
-              <div class="d-flex botones">
-                <div>
+              <div class="d-flex flex-row botones">
+                
     
                   <button
                     class="button"
@@ -40,16 +41,14 @@
                     (click)="mostrarGale()"
                     >
                     Galeria
+                    <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
                   </button>
-                </div>
-                <div>
-    
-                  <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
-                </div>
+              
+            
               </div>
 
-               <div class="d-flex botones">
-                 <div>
+               <div class="d-flex flex-row botones">
+                 <
                     <button
                       class="button"
                       mat-button
@@ -58,13 +57,11 @@
                       (click)="activarChat()"
                       >
                         Chat	
-                        </button>
-                        
-                    </div>
-                    <div>
                         <mat-icon style="margin-left: 1rem; color: #214ea8;"> chat</mat-icon>
+                        </button>
+                    
     
-                 </div>
+                 
                </div>
           </div>
        

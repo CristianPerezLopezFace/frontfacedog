@@ -18,11 +18,7 @@ import { Usuario } from 'src/app/clases/usuario';
   styleUrls: ['./tar-noticia.component.scss'],
 })
 export class TarNoticiaComponent implements OnInit {
-  dataFotoPrincipal = '';
-  nombre = '';
-  tipo = '';
-  comentarios: Comentario[] = [];
-  misAmigos: Amigo[] = [];
+  
   misNoticias: Foto[] = [];
   panelOpenState = false;
   comentarOk = false;
@@ -61,11 +57,9 @@ export class TarNoticiaComponent implements OnInit {
   }
 
 
-  getImagen() {
+  async getImagen() {
     if (this.id_foto == undefined) {
-      this.userService.getImage(this.foto.id).subscribe((foto) => {
-        this.foto = foto;
-      });
+      this.foto = await  this.userService.getImage(this.foto.id).toPromise()        
     }
   }
 
@@ -76,7 +70,7 @@ export class TarNoticiaComponent implements OnInit {
   activarComentarios() {
     this.comentarOk = !this.comentarOk;
   }
-  comentar(idFoto: number, emailDestinatario: string, foto: Foto) {
+  async comentar(idFoto: number, emailDestinatario: string, foto: Foto) {
     let email = this.jwt.decodeToken(localStorage.getItem('token')!).sub.email;
     let name = this.jwt.decodeToken(localStorage.getItem('token')!).sub.name;
     let formattedDt = formatDate(new Date(), 'yyyy-MM-dd hh:mm:ss', 'en_US');
@@ -90,12 +84,10 @@ export class TarNoticiaComponent implements OnInit {
       []
     );
     if (this.value != '') {
-      this.userService.createComentario(comentario).subscribe((e) => {
-        this.getImagen();
-        this.ngOnInit();
-        this.message.createMessage('Comentario realizado');
-      });
-      
+      await  this.userService.createComentario(comentario).toPromise()
+      this.getImagen();
+      this.ngOnInit();
+      this.message.createMessage('Comentario realizado');
       if(this.email_user != emailDestinatario){
          this.notificarComentario(emailDestinatario, idFoto);
       }
@@ -108,7 +100,6 @@ export class TarNoticiaComponent implements OnInit {
       let emailUser = this.jwt.decodeToken(localStorage.getItem('token')!).sub
         .id_fotos;
       let tipoNoti = 'comentario en foto';
-      console.log(emailUser,emailDestinatario)
       if(emailUser != emailDestinatario){
       
             let notificacion = new Notificacion(
@@ -130,34 +121,27 @@ export class TarNoticiaComponent implements OnInit {
     });
   }
 
-  likeComent(id_foto: number, emailUser: string, posicion: number) {
+  async likeComent(id_foto: number, emailUser: string, posicion: number) {
     this.ok = true;
-    this.userService.get_one_user(emailUser).subscribe((user) => {
-      this.userService
-        .addLikeComentario(id_foto, user.id, posicion)
-        .subscribe((e) => {
-          this.getImagen();
-          this.ngOnInit();
-        });
-    });
+    let user = await this.userService.get_one_user(emailUser).toPromise()
+    await this.userService.addLikeComentario(id_foto, user.id, posicion).toPromise()  
+    this.getImagen();
+    this.ngOnInit();  
   }
 
   amigos() {
     this.router.navigate(['/amigos']);
   
   }
-  getNombresLike(idFoto:number){
-      console.log("ohlalaa")
+  async getNombresLike(idFoto:number){
+      
       this.nombresLike=[]   
-      this.userService.getNombresLikesFoto(idFoto).subscribe(nombres => {
-          this.nombresLike = nombres
-      })
+      this.nombresLike = await this.userService.getNombresLikesFoto(idFoto).toPromise()
       
   }
   openDialog(foto:Foto) {
     const dialogRef = this.dialog.open(AmpliarFotoComponent,{
-    
-    
+
       data: {
         foto:foto
       }
@@ -172,10 +156,9 @@ export class TarNoticiaComponent implements OnInit {
   
     })
     }
-    getNombreUsuario(email:string){
-        this.userService.get_one_user(email).subscribe(user => {
-            this.nameUserNoticia = user.name
-        })
+    async getNombreUsuario(email:string){
+      let user = await this.userService.get_one_user(email).toPromise()
+      this.nameUserNoticia = user.name
     }
   
 }

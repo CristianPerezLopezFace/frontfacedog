@@ -28,8 +28,8 @@
           <div>
             <app-subir-foto></app-subir-foto>
           </div>
-          <div class="d-flex botones">
-            <div>
+          <div class="d-flex felx-row botones">
+           
 
               <button
                 class="button"
@@ -39,16 +39,14 @@
                 (click)="mostrarGale()"
                 >
                 Galeria
+                <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
               </button>
-            </div>
-            <div>
+            
 
-              <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
-            </div>
+          
           </div>
-          <div class="d-flex botones">
-            <div>
-
+          <div class="d-flex felx-row botones">
+            
               <button
                 class="button"
                 mat-button
@@ -57,16 +55,15 @@
                 (click)="consultas()"
                 >
                   Consultas 
+                  <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
                 </button>
-              </div>
-              <div>
-                <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+              
 
-             </div>
+             
 
           </div>
-          <div class="d-flex botones">
-            <div>
+          <div class="d-flex felx-row botones">
+           
                 <button
                   class="button"
                   mat-button
@@ -75,30 +72,26 @@
                   (click)="personas()"
                   >
                   Usuarios 
-                  </button>
-              </div>
-              <div>
                   <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+                  </button>
+             
 
-              </div>
           </div>
-           <div class="d-flex botones">
-             <div>
+           <div class=" botones">
+             
                 <button
-                  class="button"
+                  class="button "
                   mat-button
                   [disableRipple]="true"
                   [ngClass]="botonClicado ===  'chat' ? 'buttonSportsSelected' : ''"          
                   (click)="activarChat()"
                   >
-                    Chat	
-                    </button>
+                   Chat	
+                  <mat-icon style="color: #214ea8;"> chat</mat-icon>
+                </button>
                     
-                </div>
-                <div>
-                    <mat-icon style="margin-left: 1rem; color: #214ea8;"> chat</mat-icon>
+                
 
-             </div>
            </div>
           </div>
 

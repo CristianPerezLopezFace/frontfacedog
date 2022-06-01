@@ -1,0 +1,12 @@
+@import "../../../../node_modules/bootstrap/scss/mixins";
+@import "../../../../node_modules/bootstrap/scss/functions";
+@import "../../../../node_modules/bootstrap/scss/variables";
+@import "../../../assets/styles2.scss";
+
+
+
+.fondo{
+    
+    background-color: $oscuro;
+    width: fit-content !important;
+}

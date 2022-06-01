@@ -24,7 +24,7 @@
 .botones{
   display: flex !important;
   justify-content: space-between;
-  margin-right: 1rem;
+ 
 
 }
 
@@ -35,8 +35,10 @@
       width: 100%;
       display: inline;
       text-overflow: ellipsis;
+      background-color: $claroA;
       letter-spacing: 0.5px;
-  
+      border-bottom: 3px solid $oscuro;
+
       &:hover {
         background-color: rgba($claro-color, 0.2);
         border-bottom: 3px solid black;
