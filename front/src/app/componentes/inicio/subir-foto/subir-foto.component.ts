@@ -27,6 +27,8 @@ export class SubirFotoComponent implements OnInit {
   type = ""
   srcFotoSeleccionada = ""
 
+  breakpoint!:boolean
+  fotoBotonStr:string = "" 
   @Input()
   veterinario!:boolean
   constructor(private message:MessageService,private modalService: NgbModal,private userService:UsuriosService,private jwt:JwtHelperService) { 
@@ -41,7 +43,7 @@ export class SubirFotoComponent implements OnInit {
 
   ngOnInit(): void {
     
-    
+    this.detectarBreakPoint()
   }
   
   addFoto(){
@@ -78,7 +80,6 @@ export class SubirFotoComponent implements OnInit {
    _handleReaderLoader(readerEvent:any){
     var binaryString=readerEvent.target.result;
     this.archivo.base64textString=btoa(binaryString);
-    console.log(this.archivo.base64textString)
     this.srcFotoSeleccionada ="data:image/jpg;base64,"+this.archivo.base64textString
    
     
@@ -109,5 +110,14 @@ export class SubirFotoComponent implements OnInit {
         };
         myReader.readAsDataURL(file);
     }
+}
+
+detectarBreakPoint() {
+  let width = window.innerWidth;
+  this.breakpoint = width < 576 ? true : false;
+  this.fotoBotonStr = this.breakpoint
+    ? ''
+    : 'Foto';
+ 
 }
 }

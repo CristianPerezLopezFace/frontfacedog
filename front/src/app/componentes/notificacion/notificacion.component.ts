@@ -156,4 +156,8 @@ export class NotificacionComponent implements OnInit {
     })
 
   }
+  closeDialog() {
+    this.dialogRef.close();
+  }
+
 }

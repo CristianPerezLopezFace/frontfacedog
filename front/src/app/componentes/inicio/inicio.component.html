@@ -11,74 +11,52 @@
         />
         <div class="card-body">
           <p class="card-text">
-            Consulta cualqueir duda sobre tu perro con nuestros veterianrios
+            Consulta cualqueir duda sobre tu perro con nuestros veterinarios
           </p>
         
         </div>
       </div>
-    <div class="">
-
-
-
-
+  
       <div class="btns">
-          <div>
-            <app-veterinario></app-veterinario>
-          </div>
-          <div>
+          
+          
+        
             <app-subir-foto></app-subir-foto>
-          </div>
-          <div class="d-flex felx-row botones">
-           
-
+          
+            
               <button
-                class="button"
+                class="button align-items-center"
                 mat-button
-                [disableRipple]="true"  
-                [ngClass]="botonClicado ===  'galeria' ? 'buttonSelected' : ''"          
                 (click)="mostrarGale()"
                 >
-                Galeria
+                {{galeria}}
                 <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
               </button>
-            
+             
 
-          
-          </div>
-          <div class="d-flex felx-row botones">
-            
+         
               <button
                 class="button"
                 mat-button
-                [disableRipple]="true"  
-                [ngClass]="botonClicado ===  'galeria' ? 'buttonSportsSelected' : ''"          
                 (click)="consultas()"
                 >
-                  Consultas 
-                  <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+                  {{consultasStr}}
+                  <mat-icon style="margin-left: 1rem; color: #214ea8;"> local_hospital</mat-icon>
                 </button>
               
 
              
 
-          </div>
-          <div class="d-flex felx-row botones">
-           
                 <button
                   class="button"
                   mat-button
-                  [disableRipple]="true"  
-                  [ngClass]="botonClicado ===  'galeria' ? 'buttonSportsSelected' : ''"          
                   (click)="personas()"
                   >
-                  Usuarios 
-                  <mat-icon style="margin-left: 1rem; color: #214ea8;">collections</mat-icon>
+                  {{usuarios}}
+                  <mat-icon >group</mat-icon>
                   </button>
              
-
-          </div>
-           <div class=" botones">
-             
+    
                 <button
                   class="button "
                   mat-button
@@ -86,16 +64,16 @@
                   [ngClass]="botonClicado ===  'chat' ? 'buttonSportsSelected' : ''"          
                   (click)="activarChat()"
                   >
-                   Chat	
+                   {{chat}}	
                   <mat-icon style="color: #214ea8;"> chat</mat-icon>
                 </button>
                     
                 
 
-           </div>
+       
           </div>
 
-    </div>
+  
   </div>
 
   <div class="noticiasYchat">

@@ -33,6 +33,8 @@ export class TarNoticiaComponent implements OnInit {
   nameUserNoticia = ""
   nombresLike:Usuario[]=[]
 
+  fechaModificacion!:Date
+
   @Input()
   foto!: Foto;
 
@@ -49,18 +51,21 @@ export class TarNoticiaComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit(): void {
-    this.getImagen();
+  async ngOnInit(): Promise<void> {
+    await this.getImagen();
     this.getNombreUsuario(this.foto.email)
-    
-  
+    this.fechaModificacion = this.foto.fechaModificacion
+  this.formatearFecha(this.fechaModificacion)
   }
 
 
   async getImagen() {
-    if (this.id_foto == undefined) {
-      this.foto = await  this.userService.getImage(this.foto.id).toPromise()        
-    }
+    
+    this.foto = await  this.userService.getImage(this.foto.id).toPromise()        
+  }
+
+  formatearFecha(fecha:Date){
+      console.log(fecha)
   }
 
   ver() {

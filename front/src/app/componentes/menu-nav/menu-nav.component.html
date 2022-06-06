@@ -5,8 +5,8 @@
 
    
      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-        <button mat-button class="navbar-brand" (click)="inicio()">	<mat-icon>home</mat-icon>{{nombreUsuario}} </button>
+        <div class="container-fluid d-flex flex-row">
+        <div mat-button class="navbar-brand d-flex  m-auto" (click)="inicio()">	<p>{{nombreUsuario}}</p><mat-icon>home</mat-icon> </div>
    
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -15,15 +15,15 @@
       
         <div  class="nav-item active">
           
-            <button mat-button color="accent" (click)="amigos()" ><mat-icon style="color: #214ea8;">group</mat-icon></button>
+            <button mat-button color="accent" (click)="amigos()" ><mat-icon >group</mat-icon></button>
             
         </div>
-        <div  class="nav-item">
-          <button mat-button style="color: #214ea8;" (click)="zonas()" *ngIf="rol == 'Usuario'">Zonas</button >
+        <div  class="nav-item">/
+          <button mat-button  (click)="zonas()" *ngIf="rol == 'Usuario'"><mat-icon> edit_location</mat-icon></button >
 
         </div>
         <div class="nav-item">
-          <button mat-button style="color: #214ea8;" (click)="consultas()"  *ngIf="rol == 'Usuario'">Consultas</button>
+          <button mat-button  (click)="consultas()"  *ngIf="rol == 'Usuario'"><mat-icon >  local_hospital</mat-icon></button>
           <div *ngIf="rol == 'Veterinario'">
             <app-subir-foto
             [veterinario]=true
@@ -31,13 +31,17 @@
           </div>
         </div>
       
+        <div class="nav-item " (click) = "openDialogSetting()">
+          
+          <mat-icon>settings_applications</mat-icon>
+        </div>
                
         <div class="nav-item dropdown"  *ngIf="rol == 'Usuario'">
           <button *ngIf="notificaciones.length==0" mat-button  class="dropdown-toggle " data-bs-toggle="dropdown" role="button" aria-expanded="false">
-            <mat-icon style="color: #214ea8;">notifications</mat-icon> {{notificaciones.length}}
+            <mat-icon >notifications</mat-icon> {{notificaciones.length}}
           </button>
           <button *ngIf="notificaciones.length>0" mat-button  style="color: #214ea8;" class="dropdown-toggle " data-bs-toggle="dropdown" role="button" aria-expanded="false">
-            <mat-icon style="color: #214ea8;">notifications_active</mat-icon>{{notificaciones.length}}
+            <mat-icon >notifications_active</mat-icon>{{notificaciones.length}}
           </button>
           <div class="dropdown-menu desplegableNotif" >
             <div *ngFor="let noti of notificaciones">

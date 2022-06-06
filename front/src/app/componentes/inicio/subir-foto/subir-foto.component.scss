@@ -5,11 +5,20 @@
 @import "../../../../assets/styles2.scss";
 
 
-@include media-breakpoint-down(md) {
- 
+@include media-breakpoint-down(sm) {
+  .contenido{
+    height: 20rem !important;
+  }
     
 
+  button{
     
+    font-size: 2rem !important;
+  }
+  .button{
+    margin: 0.5rem !important;
+    align-items: center !important;
+  }
 }
 .botones{
   display: flex !important;
@@ -58,7 +67,7 @@ img{
     border-bottom: 3px solid $oscuro;
    
     &:hover {
-      background-color: rgba($claro-color, 0.2);
+      background-color:  white;;
       border-bottom: 3px solid black;
       ::ng-deep .mat-button-wrapper {
           color: $claroB;

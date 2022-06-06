@@ -1,33 +1,55 @@
 
 <div class="form-container">
-    <h1>Actualizar usuarios!</h1>
+    <h1>Actualizar</h1>
     <form [formGroup]="contacForm">
-   
-      <p>id</p>
+      <div class="d-block" *ngIf="usuario.roles == 'Admin'">
+        <p>id</p>
         <input type="text" id="contenedorEmail" formControlName="id" placeholder="id">
-       <p>nombre</p> 
-      <input type="text" id="contenedorNombre" formControlName="nameUs" placeholder="Nombre">
-      <p>email</p>
-      <input type="text" id="contenedorEmail" formControlName="email" placeholder="email">
-      <p>contraseña</p> 
-      <input type="text" formControlName="password" placeholder="contraseña">
-      <p>apellido</p>
-      <input type="text" formControlName="apellido" placeholder="apellido">
-      <p>ciudad</p>
-      <input type="text" formControlName="city" placeholder="ciudad">
-      <p>rol</p>
-      <input type="text" formControlName="rol" placeholder="rol">
-      <p>descripcion</p>
-      <input type="text" formControlName="descrip" placeholder="descripcion">
-      <p>habilitado</p>
-      <input type="text" formControlName="habilitado" placeholder="habilitado">
-        <br><br/> 
+
+      </div>
+      <div class="d-block">
+        <p>nombre</p> 
+       <input type="text" id="contenedorNombre" formControlName="nameUs" placeholder="Nombre">
+
+      </div>
+      <div class="d-block">
+        <p>contraseña</p> 
+        <input type="text" formControlName="password" placeholder="contraseña">
+        
+      </div>
+      <div class="d-block">
+        <p>apellido</p>
+        <input type="text" formControlName="apellido" placeholder="apellido">
+        
+      </div>
+      <div class="d-block">
+        ciudad
+        <input type="text" formControlName="city" placeholder="ciudad">
+
+      </div>
+      <div class="d-block" *ngIf="usuario.roles == 'Admin'">
+        <p>email</p>
+        <input type="text" id="contenedorEmail" formControlName="email" placeholder="email">
+
+      </div>
+      <div class="d-block" >
+
+        <p>descripcion</p>
+        <input type="text" formControlName="descrip" placeholder="descripcion">
+      </div>
+      <div class="d-block" *ngIf="usuario.roles == 'Admin'">
+        <p>habilitado</p>
+        <input type="text" formControlName="habilitado" placeholder="habilitado">
+      </div>
+      <div class="d-block" *ngIf="usuario.roles == 'Admin'">
+        <p>rol</p>
+        <input type="text" formControlName="rol" placeholder="rol">
+
+      </div>
+       
       <button type="submit" class="btn-send" (click)="updateUser()">Actualizar</button>
       <br><br/>
-      <button type="submit" class="btn-send" (click)="loadUser()">Cargar usuario</button>
-      <br><br/>
-  
-      <br><br/> 
+     
       
     </form>
   </div>

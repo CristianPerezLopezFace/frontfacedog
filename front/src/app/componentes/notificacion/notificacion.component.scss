@@ -49,3 +49,69 @@ h2{
     font-family: $tipoLetraPrimary;
     text-align: center;
 }
+
+.close {
+    position:relative;
+    right: 1.25rem;
+    top: 1.25rem;
+    z-index: 6;
+  
+    mat-icon {
+      color: rgb(255, 255, 255);
+      transition: all 0.25s;
+      font-weight: bold;
+    }
+  
+    &::before {
+      content: "";
+  
+      position:relative;
+      top: -0.25rem;
+      right: -0.2rem;
+      width: 2rem;
+      height: 2rem;
+      z-index: 3;
+      background-color: transparent;
+      border-radius: 50%;
+    }
+    &:hover {
+      border-color: rgb(21, 0, 92);
+  
+      mat-icon {
+        color: rgb(255, 255, 255);
+        transform: rotate(90deg);
+      }
+    }
+  }
+  
+.btnComent:hover {
+    background-color: $claro-color;
+  }
+  
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  
+  ::-webkit-scrollbar:vertical {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-button:increment,
+  .contenedor::-webkit-scrollbar-button {
+    display: none;
+  }
+  
+  ::-webkit-scrollbar:horizontal {
+    height: 0.5rem;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border-right: 3px solid $bordes;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  

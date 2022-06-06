@@ -11,47 +11,132 @@
 
  
 }
-
 .row{
-    display: flex;
-    flex-direction: row;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    border: solid 1px black;
+  
+  margin: auto;
+}
+.amigo{
+  
 }
 .buscador{
-  width: 40%;
-  margin-left: 2rem;
+  border-radius: 4px;
+  margin: 0.4rem;
+  background-color: $claro-color;
 }
 img{
-    width: fit-content;
+  width:10rem;
     height: 10rem;
     border: solid 3px $bordes;
     border-radius: 6px;
     margin-left: 1rem;
     margin-top: 1rem;
     border: 3px solid $bordes ;
-
-
-}
+    
+    
+  }
 .botones{
-    border-left: 3px solid $bordes !important;
-
-}
-
+    width: 100%;
+    margin: 0.4rem;
+    border-radius: 4px;
+    
+  }
+  
 button {
   width: 100%;
+  background-color: $claroB;
   display: inline;
   text-overflow: ellipsis;
   letter-spacing: 0.5px;
+  color:white;
   border-bottom: 3px solid white;
-
+  
   &:hover {
     background-color: rgba($claro-color, 0.2);
     border-bottom: 3px solid black;
     ::ng-deep .mat-button-wrapper {
-        color: $claroB;
+      color: $claroB;
     }
   }
 
+}
+.amigo {
+  background-color: $claroA;
+  width: 20%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border: solid 1px black;
+  box-shadow: 1px 1px 16px lightgray;
+  border-radius: 1rem;
+  font-size: 0.975rem;
+  align-items: center;
+
+
+}
+
+
+@include media-breakpoint-up(xl) {
+.row {
+  width: 90%;
+
+  & > * {
+    width: auto;
+  }
+
+  .amigo {
+    width: 46%;
+    max-width: 20rem;
+  }
+}
+}
+
+@include media-breakpoint-down(xl) {
+.amigo {
+  width: 45% !important;
+}
+}
+
+@include media-breakpoint-up(lg) {
+.amigo {
+  &__buttons {
+    & > * {
+      width: 40%;
+    }
+  }
+}
+}
+
+@include media-breakpoint-down(lg) {
+.amigo {
+  &__buttons {
+    & > * {
+      width: 70%;
+    }
+  }
+}
+}
+
+@include media-breakpoint-only(sm) {
+
+  .amigo {
+    width: 46.5% !important;
+  }
+
+}
+
+@include media-breakpoint-down(sm) {
+.buttons {
+  button {
+    width: 32%;
+  }
+}
+
+.amigo {
+  width: 75% !important;
+}
+}
+
+@media (max-width: 425px) {
+.amigo {
+  width: 90% !important;
+}
 }

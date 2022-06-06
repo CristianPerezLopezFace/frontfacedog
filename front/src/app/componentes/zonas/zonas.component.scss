@@ -7,11 +7,32 @@
 
 @import "../../../assets/styles2.scss";
 
-  
+button {
+    width: 100%;
+    display: inline;
+    text-overflow: ellipsis;
+    letter-spacing: 0.5px;
+    background-color: $claroA;
+    border-bottom: 3px solid $oscuro;
+    color: black;
 
-   
+
+  &:hover {
+    background-color: white;
+    border-bottom: 3px solid black;
+    color: black;
+
+  
+  }
+
+}
+.mapa{
+    height: auto;
+    width: 100%;
+}
 .contenedor{
 display: flex;
+justify-content: center;
 overflow:scroll;
 
 

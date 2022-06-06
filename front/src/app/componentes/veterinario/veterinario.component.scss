@@ -28,34 +28,40 @@
 
 }
 
+@include media-breakpoint-down(sm) {
+
+  p, button{
+    font-size: 2rem !important;
+  }
+}
 
     
   
-    .button {
-      width: 100%;
-      display: inline;
-      text-overflow: ellipsis;
-      background-color: $claroA;
-      letter-spacing: 0.5px;
-      border-bottom: 3px solid $oscuro;
+.button {
+  width: 100%;
+  display: inline;
+  text-overflow: ellipsis;
+  background-color: $claroA;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid $oscuro;
 
-      &:hover {
-        background-color: rgba($claro-color, 0.2);
-        border-bottom: 3px solid black;
-        ::ng-deep .mat-button-wrapper {
-            color: $claroB;
-        }
-      }
-  
+  &:hover {
+    background-color:  white;;
+    border-bottom: 3px solid black;
+    ::ng-deep .mat-button-wrapper {
+        color: $claroB;
     }
-  
- 
-  
-  
-    p,
-    button,
-    div {
-      font-family: $tipoLetraPrimary;
-      font-size: large;
-      text-align: center;
-    }
+  }
+
+}
+
+
+
+
+p,
+button,
+div {
+  font-family: $tipoLetraPrimary;
+  font-size: large;
+  text-align: center;
+}

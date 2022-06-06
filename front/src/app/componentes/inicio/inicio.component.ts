@@ -34,6 +34,16 @@ export class InicioComponent implements OnInit {
 
   botonClicado = '';
 
+
+  //nombres de botones
+  
+  galeria : string = ""
+  consultasStr : string= ""
+  usuarios:string = ""
+  chat : string = ""
+  breakpoint!: boolean;
+
+
   constructor(
     public sanitizer: DomSanitizer,
     
@@ -49,7 +59,7 @@ export class InicioComponent implements OnInit {
 
     this.userRegisterService.tokenExpired(localStorage.getItem("token")!)
 
-      
+    this.detectarBreakPoint()
     
   }
 
@@ -98,5 +108,17 @@ export class InicioComponent implements OnInit {
   consultas(){
     
     this.router.navigate(['home/consultas'])
+  }
+  detectarBreakPoint() {
+    let width = window.innerWidth;
+    this.breakpoint = width < 576 ? true : false;
+    this.galeria = this.breakpoint
+      ? ''
+      : 'Galeria';
+    this.consultasStr = this.breakpoint ? '' : 'Consultas';
+    this.usuarios= this.breakpoint
+      ? ''
+      : 'Usuarios';
+    this.chat = this.breakpoint ? '' : 'Chat'
   }
 }

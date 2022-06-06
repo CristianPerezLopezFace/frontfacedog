@@ -15,18 +15,27 @@
 
   .centro{
     width: 50%;
+    
   }
 
   .chat{
     width: 40%;
+    border: solid 1px black;
+    box-shadow: 1px 1px 16px lightgray;
+    border-radius: 1rem;
   }
 }
 .divIzq{
   width: 20%;
   background-color: rgba($claro-color, 0.2);
+  border: solid 1px black;
+  box-shadow: 1px 1px 16px lightgray;
+  border-radius: 1rem;
 }
 
-  
+  mat-icon{
+    margin: auto !important;
+  }
   .button {
     width: 100%;
     display: inline;
@@ -37,7 +46,7 @@
 
 
   &:hover {
-    background-color: rgba($claro-color, 0.2);
+    background-color: white;
     border-bottom: 3px solid black;
     ::ng-deep .mat-button-wrapper {
         color: $claroB;
@@ -107,92 +116,17 @@ div {
       width: 100% !important;
       
     }
+    .card{
+      display: none !important;
+      
+    }
+    .button{
+      margin: 0.5rem !important;
+    }
+  
+
 }
-// @include media-breakpoint-down(md) {
-//   .inicio{
-//     display: grid !important;
-   
-//   }
-//   .btns{
-//     margin-top: 0.5rem;
-//     margin-bottom: 1rem;
-//     display: flex !important;
-//     justify-content: space-around !important;
-//   }
-//   .divIzq{
-//   }
-//   .centro{
-//     width: 50%;
-//   }
 
-  
-// }
-// @include media-breakpoint-down(sm) {
-  
-//   .btns{
-//     //display: flex !important;
-//     // justify-content: space-around !important;
-//     text-align-last: justify !important;
-//     overflow: scroll !important;
-//   }
-//   .noticiasYchat{
-//     display: block !important;
-//     height: 100vh !important;
-//   }
-//   .centro{
-//     width: 100% !important;
-//     height: 40rem !important;
-//     border: solid 3px $bordes !important;
-   
-//     margin-bottom: 2rem !important;
-
-//   }
-//   .divIzq{
-//     width: -webkit-fill-available !important;
-
-//   }
-  
-//   .inicio{
-//     width: 100% !important;
-//   }
-
-// }
-
-// .noticiasYchat{
-//   display: flex;
-//   justify-content: space-around;
-//   width: 100%;
-// }
-// .centro{
-//   margin-left: 1rem;
-//   width: -webkit-fill-available !important;
-// }
-
-// .inicio{
-//   display: flex;
-//   justify-content: space-around;
-  
-// }
-
-// .divIzq{
-//   border-right: 3px solid $bordes;
-//   width: 20rem;
-// }
-
-// .imgVeter {
-//   border-radius: 10px;
-  
-// }
-
-// .img {
-//   width: 300px;
-//   height: 200px;
-// }
-
-
-// .chat {
-//   border-left: 3px solid $bordes;
-//   width: -webkit-fill-available !important;
-
-
-
+mat-icon{
+  color: #214ea8;
+}

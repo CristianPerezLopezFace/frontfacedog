@@ -8,5 +8,12 @@
 .fondo{
     
     background-color: $oscuro;
-    width: fit-content !important;
+    
+}
+
+@include media-breakpoint-down(md) {
+    .fondo{
+
+        width: fit-content !important;
+    }
 }

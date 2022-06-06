@@ -62,6 +62,7 @@ export class NoticiasComponent implements OnInit, OnDestroy{
       
     let nameEmail=this.jwt.decodeToken(localStorage.getItem("token")!).sub.email
     let fotos = await this.userService.getAllImgVeterByUser(nameEmail!).toPromise()
+    this.sinAmigos = fotos.length == 0
     fotos.forEach((foto) => {
       this.misNoticias.push(foto);
     });

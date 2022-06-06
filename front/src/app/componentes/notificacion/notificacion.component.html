@@ -1,16 +1,19 @@
+<div>
 
+  <div class="close" (click)="closeDialog()" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </div>
+  <div class="titulo">
 
+    <p  style="    text-transform: capitalize;">   {{dialog["notificaion"].name}}</p>
+    <p>
+    ha realizado {{dialog["notificaion"].tipo}}
+    </p>
+  
+  </div>
 <mat-dialog-content  class="mat-typography" >
 
-    <div class="titulo">
-  
-      <p  style="    text-transform: capitalize;">   {{dialog["notificaion"].name}}</p>
-      <p>
-      ha realizado {{dialog["notificaion"].tipo}}
-      </p>
-    
-    </div>
-  
+
     <div class="contenedor" *ngIf="notificacion.tipo=='comentario en foto'">
                     <div class="imagen">
                       <img src="{{ srcFoto }}" alt="Photo of a Shiba Inu" />                   
@@ -77,24 +80,13 @@
       </div>
       
       <div class="nav-item dropdown" *ngIf="amigo!=undefined">
-        <h2>
-          Responder
-        </h2>
-        <p>
-          {{amigo.name}}
-        </p>
-        <p>
-          {{amigo.surName}}
-        </p>
-        <p>
-          {{amigo.ciudad}}
-        </p>
-        <p>
-          {{amigo.descripcion}}
-        </p>
+     
+  
       </div>
 
   </div>
 
   </mat-dialog-content>
 
+
+  </div>

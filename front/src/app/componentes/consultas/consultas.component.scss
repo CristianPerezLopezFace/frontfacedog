@@ -15,18 +15,27 @@
 
   .centro{
     width: 50%;
+    
   }
 
   .chat{
     width: 40%;
+    border: solid 1px black;
+    box-shadow: 1px 1px 16px lightgray;
+    border-radius: 1rem;
   }
 }
 .divIzq{
   width: 20%;
   background-color: rgba($claro-color, 0.2);
+  border: solid 1px black;
+  box-shadow: 1px 1px 16px lightgray;
+  border-radius: 1rem;
 }
 
-  
+  mat-icon{
+    margin: auto !important;
+  }
   .button {
     width: 100%;
     display: inline;
@@ -37,7 +46,7 @@
 
 
   &:hover {
-    background-color: rgba($claro-color, 0.2);
+    background-color: white;
     border-bottom: 3px solid black;
     ::ng-deep .mat-button-wrapper {
         color: $claroB;
@@ -95,7 +104,7 @@ div {
 @include media-breakpoint-down(sm) {
     .inicio{
       margin-left: 1rem !important;
-      margin-right: 3rem !important;
+      margin-right: 1rem !important;
     }
     .noticiasYchat{
       display: block !important;
@@ -107,12 +116,15 @@ div {
       width: 100% !important;
       
     }
+    .card{
+      display: none !important;
+      
+    }
+    
+  
+
 }
-.imgVeter{
-  margin: auto;
-  width: 10rem;
-  height: 10rem;
+
+mat-icon{
+  color: #214ea8;
 }
-
-
-

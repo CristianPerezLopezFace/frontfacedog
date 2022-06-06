@@ -5,10 +5,12 @@
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../assets/styles2.scss";
 
-
+.p{
+  margin: auto;
+}
 .form-container{
     font: 95% Arial, Helvetica;
-    max-width: 500px;
+  
     padding: 16px;
     margin:10px auto;
     background: #f7f7f7;
@@ -25,7 +27,7 @@
   
   .form-container input[type="text"],
   .form-container input[type="email"],
-  .form-container textarea{
+  .form-container text{
     transition: all 0,30s ease-in-out;
     outline: none;
     box-sizing: border-box;
@@ -35,7 +37,7 @@
     padding: 3%;
     color: #555;
     font: 95% Arial, helvetica, sans-serial;
-    margin-top: 16px ;
+    margin-bottom: 16px ;
   }
    .btn-send{
     box-sizing: border-box;

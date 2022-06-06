@@ -6,6 +6,8 @@ import { UsuriosService } from '../../servicios/usurios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Foto } from 'src/app/clases/foto';
 import { NotificacionComponent } from '../notificacion/notificacion.component';
+import { Usuario } from 'src/app/clases/usuario';
+import { ActualizarUserComponent } from '../actualizar-user/actualizar-user.component';
 
 
 
@@ -113,4 +115,15 @@ export class MenuNavComponent implements OnInit {
   
   }
   
+ async openDialogSetting() {
+    let usuario = await this.userService.get_one_user(this.emailUser).toPromise()
+    const dialogRef = this.dialog.open(ActualizarUserComponent  ,{
+      width: '700px',
+      height : '500px',
+      data: {
+        user:usuario,
+        
+      }
+    })
+}
   }

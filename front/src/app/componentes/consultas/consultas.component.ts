@@ -31,7 +31,7 @@ export class ParquesComponent implements OnInit {
   abrirChat: boolean = true;
   botonClicado = '';
 
-  srcFotoAnuncio: string = '';
+  srcFotoAnuncio: string = '../../../assets/user.png';
   nombre: string = '';
   descripcion: string = '';
   contador: number = 0;

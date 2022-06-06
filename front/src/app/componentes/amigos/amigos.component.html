@@ -1,28 +1,40 @@
 
 
-      <div class="d-flex botones">
+      <div class="d-flex flex-row botones">
         <button class="mat-button button " type="submit" (click)="getAllUsers()">Todos</button>
         <button class="mat-button button " type="submit" (click)="getAmigos()">Conocidos</button>
         <button class="mat-button button " type="submit" (click)="getAllUserByCity()">En tu ciudad</button>
 
         
       </div>
-      <div class="d-flex">
+      <div class="d-block align-items-center">
    
-          <mat-form-field class="buscador  button" appearance="fill" >
+          <mat-form-field class="buscador  button d-block " appearance="fill" >
             <mat-label>A quien estas buscando?</mat-label>
             <input matInput placeholder="..."   [(ngModel)]="palabraBuscar" >
-            <button class="mat-button button " type="submit" (click)="buscarAmigo()">Buscar</button>
+            <button
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="buscarAmigo()"
+                  
+            >
+            <mat-icon>send</mat-icon>
+          </button>
           </mat-form-field>
-
+          
       
 
       </div>
    
-<div class="flex" *ngIf="usuarios.length > 0">
+<div class="row px-3 justify-content-center justify-content-xl-between" *ngIf="usuarios.length > 0">
 
-  <div class="row" *ngFor="let amigo of usuarios">
-    <div class="foto col-sm-10 col-md-6 col-lg-4">
+  <div class="amigo py-3 d-flex flex-column justify-content-between" *ngFor="let amigo of usuarios">
+    <div style="width: 100%;">
+
+      <mat-icon>pets</mat-icon>
+    </div>
+    <div class="foto d-flex flex-row justify-content-center ">
       <div *ngIf="amigo.foto != '' ">
         <img src={{amigo.foto}} class="card-img-top" alt="...">
 
@@ -32,19 +44,16 @@
 
       </div>
     </div>
-    <div class="botones" style="width: 5rem;" >
-      <div class="card-body">
-        <h5 class="card-title">Nombre: {{amigo.name}}</h5>
-      </div>
-      <div class="list-group list-group-flush">
-        <p class="list-group-item">Ciudad: {{amigo.ciudad}}</p>
-      </div>
-      <div class="card-body ">
+    <div class="botones">
+    
+        <p>Nombre: {{amigo.name}}</p>
+  
+        <p>Ciudad: {{amigo.ciudad}}</p>
+    
         <button type="submit" class="mat-button  button" *ngIf="sonAmigos" (click)="verPerfil(amigo.id_fotos)">Perfil</button>
-        <button type="submit" class="mat-button  button" *ngIf="!sonAmigos" (click)="solicitarAmistad(amigo.id_fotos)"><mat-icon>person_add</mat-icon></button>
-        
-      </div>
+        <button type="submit" class="mat-button button" *ngIf="!sonAmigos" (click)="solicitarAmistad(amigo.id_fotos)"><mat-icon>person_add</mat-icon></button>
+    
     </div>
-    <br>
+   
   </div>
 </div>

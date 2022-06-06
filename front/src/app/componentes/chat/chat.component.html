@@ -1,12 +1,11 @@
 
+  <p class="titulo">{{titulo}}</p>
   <div class="contenedorChat" name="tarjet"*ngIf="!consulta">
     <div *ngFor="let doc of document.doc; index as i" class="anchoChat"> 
       <div class="flexFrase">
         <div class="frase" *ngIf="!miMensaje(doc.email)">
           <div class="nomYfecha">
-                <div>
-                  <p > <mat-icon style="color: rgb(0, 246, 29); font-size: 1rem;">account_circle</mat-icon> {{ doc.name }} &nbsp; </p>
-                </div>
+              
                 <div>
                   <p> {{doc.fecha | dateChange }}</p>
                 </div>
@@ -24,13 +23,12 @@
   </div>
   
   <div class="contenedorChat" name="tarjet" *ngIf="consulta">
+
     <div *ngFor="let doc of document.chatVeterinario; index as i" class="anchoChat"> 
       <div class="flexFrase">
         <div class="frase" *ngIf="!miMensaje(doc.email)">
           <div class="nomYfecha">
-                <div>
-                  <p > <mat-icon  style="color: rgb(0, 246, 29); font-size: 1rem;">account_circle</mat-icon> {{ doc.name }} &nbsp; </p>
-                </div>
+                
                 <div>
                   <p> {{doc.fecha | dateChange }}</p>
                 </div>

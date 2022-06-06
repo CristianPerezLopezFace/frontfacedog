@@ -1,28 +1,23 @@
 
 
-<div class="noticia">
-  <mat-card
-    class="example-card"
  
-  >
-    <mat-card-header>
-    
-     
-        
-        
-    
-    </mat-card-header>
-    <div class="nomYfecha">
-      <div >
+  <mat-card
+  class="example-card noticia" >
+
+
+ 
+   
+    <div class="nomYfecha d-felx flex-row justify-content-between">
+
+          <mat-icon>pets</mat-icon>
            <p style="font-size: 1.2rem;">
              {{ nameUserNoticia }}
            </p>
-      </div>
-      <div >
+     
         <p>
           {{ foto.fechaModificacion | dateChange }}
         </p>
-      </div>
+     
     </div>
     <img mat-card-image (click)="openDialog(foto)" src="{{ foto.foto }}" alt="Photo of a Shiba Inu" />
     <mat-card-content>
@@ -91,8 +86,8 @@
         </mat-form-field>
       </form>
     </mat-card-actions>
+  
   </mat-card>
 
-</div>
 
 

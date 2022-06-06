@@ -72,12 +72,15 @@
       display: flex;
       justify-content: space-between;
       margin: 3rem;
+      background-color: rgba($claroA, 0.2);
+
   }
   .button {
     width: 100%;
     display: inline;
     text-overflow: ellipsis;
     letter-spacing: 0.5px;
+    color: white;
   
     &:hover {
       background-color: rgba($claro-color, 0.2);

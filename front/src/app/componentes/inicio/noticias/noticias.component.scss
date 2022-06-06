@@ -26,6 +26,9 @@
   height: 100vh;
   background-color: rgba($claro-color, 0.2);
   overflow:scroll; 
+  border: solid 1px black;
+  box-shadow: 1px 1px 16px lightgray;
+  border-radius: 1rem;
 }
 
 
@@ -33,6 +36,11 @@
 
 button {
   font-family: $tipoLetraPrimary !important;
+  padding: 0.3rem;
+  border-radius: 10px;
+  :hover{
+    background-color: $claroA;
+  }
 }
 
 

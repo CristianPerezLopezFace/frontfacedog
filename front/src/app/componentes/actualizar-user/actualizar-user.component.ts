@@ -18,6 +18,7 @@ export class ActualizarUserComponent implements OnInit {
   usuario!:Usuario
   messageNoneId: boolean = false;
   email!:string;
+  rol! : string  ;
 
 
 
@@ -39,6 +40,7 @@ export class ActualizarUserComponent implements OnInit {
 }
 ngOnInit(): void {
   this.usuario = this.dialog["user"]
+  this.rol = this.usuario.roles
   this.loadUser()
 }
 async updateUser(){

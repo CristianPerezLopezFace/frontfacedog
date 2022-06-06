@@ -31,7 +31,7 @@ const routes: Routes = [
         {path : 'amigos',component:AmigosComponent,canActivate: [AppGuard]},
         {path : 'perfil',component:PerfilComponent,canActivate: [AppGuard]},
         {path : 'perfilamigo',component:PerfilAmigoComponent,canActivate: [AppGuard]},
-        {path : 'administrador',component:AministracionComponent,canActivate: [AppGuard]},
+        {path : 'administrador',component:AministracionComponent,canActivate: [AppGuard,AdminGuard]},
         {path : 'galeria',component:GaleriaComponent,canActivate: [AppGuard]},
       ], 
       canActivate: [AppGuard]

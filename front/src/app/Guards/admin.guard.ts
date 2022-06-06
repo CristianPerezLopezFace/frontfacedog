@@ -17,10 +17,10 @@ export class AdminGuard implements CanActivate {
     ): Observable<boolean> | Promise <boolean  | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree{   
         
       this.userRole =this.jwt.decodeToken(localStorage.getItem("token")!).sub.roles
-        if(this.userRole === "admin"){          
+        if(this.userRole === "Admin"){          
             return true
         }else{
-            this.router.navigate(['/login'])
+            this.router.navigate(['/home/administrador'])
             return false;
         }
     }

@@ -34,7 +34,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   closeResult = '';
 
   usuariosConectados=[]
-
+  titulo:string=""
   ultimoScroll=0
   @Input()
   consulta!: boolean;
@@ -58,7 +58,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.loadDoc('chat');
 
     setTimeout(() => {this.scroll()}, 100);
-   
+    this.titulo = this.consulta ? "Chat veterinario"  : "Chat global"
 
   }
 
@@ -70,7 +70,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     let listaDoc: Doc[] = [];
     let docu = new Doc(
       name,
-      'Selecciona un chat o crea uno nuevo',
+      '',
       new Date(),
       this.email
     );

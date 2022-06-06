@@ -6,9 +6,25 @@
 @include media-breakpoint-down(sm) {
   .contenedorChat{
 
-   
+    
     
   }
+  .titulo{
+    width: 100% !important;
+  }
+}
+.titulo{
+  position: absolute !important;
+  font-size: 1.5rem !important;
+  
+  width: max-content;
+  margin: auto;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color:rgba($claro-color, 0.2);;
+  color: white !important;
+  width: 30%;
+    
 }
   .contenedorChat{
     height:78vh;

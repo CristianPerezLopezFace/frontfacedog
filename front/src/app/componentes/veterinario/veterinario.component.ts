@@ -5,6 +5,7 @@ import { Foto } from '../../clases/foto';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Comentario } from 'src/app/clases/comentario';
+import { MessageService } from 'src/app/servicios/message.service';
 
 @Component({
   selector: 'app-veterinario',
@@ -25,11 +26,14 @@ export class VeterinarioComponent implements OnInit {
   video:any
   type = ""
 
+
+  breakpoint!:boolean
+  veterinarioStr:string=""
   @Input()
   anuncio!:boolean
 
   
-  constructor(private modalService: NgbModal,private userService:UsuriosService,private jwt:JwtHelperService) { 
+  constructor(private modalService: NgbModal,private userService:UsuriosService,private jwt:JwtHelperService,private message:MessageService) { 
     this.contacForm =new FormGroup({
         
       tipourgencia: new FormControl('',[Validators.required]),
@@ -41,6 +45,7 @@ export class VeterinarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.detectarBreakPoint()
   }
   addFoto(){
     
@@ -54,11 +59,12 @@ export class VeterinarioComponent implements OnInit {
          let foto = new Foto("tipourgencia",descrpcion,dataFoto,emailFoto,0,0,[],[],new Date(),"veterinario");
          this.userService.addImage(foto).subscribe((m)=>{
             window.location.reload();
-            alert("Subida correctamente")  
+            this.message.createMessage("Subida correctamente")  
 
       })
+      this.modalService.dismissAll()
     }else{
-      alert("no has añadido ninguna foto")
+     this.message.createMessage("no has añadido ninguna foto")
     }
     
   }
@@ -112,5 +118,13 @@ export class VeterinarioComponent implements OnInit {
         };
         myReader.readAsDataURL(file);
     }
+}
+detectarBreakPoint() {
+  let width = window.innerWidth;
+  this.breakpoint = width < 576 ? true : false;
+  this.veterinarioStr = this.breakpoint
+    ? ''
+    : 'Vterinario';
+ 
 }
 }

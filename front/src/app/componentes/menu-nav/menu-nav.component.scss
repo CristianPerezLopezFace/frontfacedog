@@ -7,11 +7,14 @@
 @import "../../../assets/styles2.scss";
 
 @include media-breakpoint-down(sm) {
-    .navbar{
-       
+    p{
+         font-size: 2rem !important;   
     }
   
 
+}
+mat-icon, button{
+   color: #214ea8
 }
 
 .nav-item{  
@@ -34,14 +37,24 @@
     overflow: scroll;
  }
 
-.notificacion{ 
-      font-family: $tipoLetraPrimary;
-      color: white;
-      background-color: $claroB;
-      border-bottom: 3px solid $claroB;  
-      border-radius: 10px;
-      margin-bottom: 0.2rem;
+ .notificacion{
+   width: 100%;
+   display: inline;
+   text-overflow: ellipsis;
+   letter-spacing: 0.5px;
+   background-color: $claroA;
+   border-bottom: 3px solid $oscuro;
+
+
+ &:hover {
+   background-color: white;
+   border-bottom: 3px solid black;
+   ::ng-deep .mat-button-wrapper {
+       color: $claroB;
    }
+ }
+
+} 
 .navbar{
    justify-content: space-evenly;   
    

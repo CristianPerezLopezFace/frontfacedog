@@ -23,9 +23,8 @@ export class AmigosComponent implements OnInit {
 
   constructor(private message:MessageService,private comunicacion:ComunicacionComponentsService,private userService:UsuriosService,private router:Router,private jwt:JwtHelperService) { }
 
-  ngOnInit(): void {
-    this.getAmigos()
-    console.log(this.amigos.length," amigos")
+  async ngOnInit(): Promise<void> {
+    await this.getAllUsers()
   }
   getAmigos(){
       this.sonAmigos=true
@@ -41,13 +40,13 @@ export class AmigosComponent implements OnInit {
   async getAllUsers()  {
     this.sonAmigos=false
     this.usuarios=[]
-    this.userService.getAllUsers().subscribe(usuarios =>{
-         usuarios.forEach(usuario => {
-           if(!this.amigos.includes(usuario.id)){
-              this.usuarios.push(usuario)
-           }
-         })
+    let usuarios = await this.userService.getAllUsers().toPromise()
+    usuarios.forEach(usuario => {
+      if(!this.amigos.includes(usuario.id)){
+        this.usuarios.push(usuario)
+      }
     })
+   
   }
   async getAllUserByCity(){
 
