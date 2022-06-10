@@ -36,16 +36,7 @@
       
               {{ foto.likes.length }}
         </button>
-            <div *ngIf="nombresLike.length > 0" style=" height: 7rem; overflow: scroll;">
-                
-            <div   *ngFor="let nombre of nombresLike">
-              <mat-icon>person</mat-icon>
-
-              <span style="text-align: center;" >{{nombre.name}}</span>
-            </div>
-                
-      
-            </div>
+          
         <button mat-button (click)="ver()" class="btnComent">
           <mat-icon style="color: #214ea8;">speaker_notes</mat-icon>{{ foto.comentarios.length }}
         </button>

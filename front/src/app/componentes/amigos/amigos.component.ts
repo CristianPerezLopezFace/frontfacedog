@@ -24,18 +24,20 @@ export class AmigosComponent implements OnInit {
   constructor(private message:MessageService,private comunicacion:ComunicacionComponentsService,private userService:UsuriosService,private router:Router,private jwt:JwtHelperService) { }
 
   async ngOnInit(): Promise<void> {
+    await this.getAmigos()
     await this.getAllUsers()
   }
-  getAmigos(){
+  async getAmigos(){
       this.sonAmigos=true
       let emailUser=this.jwt.decodeToken(localStorage.getItem("token") !).sub.email;
-      this.userService.getAmigos(emailUser).subscribe(amigos =>{
-          this.amigos=[]
-          amigos.forEach(amigo => {
-            this.amigos.push(amigo.id)
-            this.usuarios.push(amigo)    
-          }) 
-      })
+      let misAmigos =await  this.userService.getAmigos(emailUser).toPromise()
+      this.amigos=[]
+      this.usuarios = []
+      misAmigos.forEach((amigo: Amigo) => {
+        this.amigos.push(amigo.id)
+        this.usuarios.push(amigo)    
+      }) 
+      
   }
   async getAllUsers()  {
     this.sonAmigos=false
